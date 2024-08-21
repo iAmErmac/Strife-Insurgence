@@ -1,0 +1,83 @@
+
+ACTOR BrutalReaver Replaces Reaver
+{
+	Game Strife
+	Health 150
+	Painchance 128
+	Speed 7
+	Radius 20
+	Height 60
+	Monster
+	+NOBLOOD
+	+INCOMBAT
+	MinMissileChance 150
+	MaxDropoffHeight 32
+	Mass 500
+	ConversationID 52, -1, -1
+	SeeSound "reaver/sight"
+	PainSound "reaver/pain"
+	DeathSound "reaver/death"
+	ActiveSound "reaver/active"
+	HitObituary "$OB_REAVERHIT"
+	Obituary "$OB_REAVER"
+	DamageFactor "Electric", 3.0
+	
+	
+	States
+	{
+	Spawn:
+		ROB1 A 10 A_Look
+		Loop
+	See:
+		ROB1 BBBBCCCCDDDDEEEE 1 A_Chase
+		Loop
+	Melee:
+		ROB1 H 6 A_FaceTarget
+		ROB1 I 8 A_CustomMeleeAttack(random[ReaverMelee](1,8)*3, "reaver/blade")
+		ROB1 H 6
+		Goto See
+	Missile:
+		ROB1 G 12 A_FaceTarget
+		
+		TNT1 A 0 A_PlaySOund("reaver/attack", 1)
+		TNT1 AAAA 0 A_CustomMissile("ZombieManTracer", 42, 0, random(-10, 10), 0)
+		ROB1 F 2 BRIGHT 
+		ROB1 G 9 A_FaceTarget
+		
+		
+		
+		Goto See
+	Pain:
+		ROB1 A 2
+		ROB1 A 2 A_Pain
+		Goto See
+		XDeath:
+	Death:
+		ROB1 J 6
+		ROB1 K 6 A_Scream
+		ROB1 L 5
+		ROB1 M 5 A_NoBlocking
+		
+		TNT1 AAA 0 A_CustomMissile ("XJunk1", 5, 0, random (0, 360), 2, random (40, 150))
+		 TNT1 AA 0 A_CustomMissile ("XJunk2", 5, 0, random (0, 360), 2, random (40, 150))
+		 TNT1 AAAA 0 A_CustomMissile ("XJunk3", 5, 0, random (0, 360), 2, random (40, 150))
+		 TNT1 AA 0 A_CustomMissile ("XJunk4", 5, 0, random (0, 360), 2, random (40, 150))
+		 TNT1 A 0 A_CustomMissile ("XJunk5", 5, 0, random (0, 360), 2, random (40, 150))
+		 TNT1 A 0 A_CustomMissile ("XDeathReaver1", 5, 0, random (0, 360), 2, random (40, 150))
+		 TNT1 A 0 A_CustomMissile ("XDeathReaver2", 5, 0, random (0, 360), 2, random (40, 150))
+		
+		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 AAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360)) 
+        TNT1 AAAAAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+        EXPL AAA 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		
+		TNT1 A 0 A_Explode(32,82,1,1)
+		ROB1 R -1
+		Stop
+	}
+
+}
+		

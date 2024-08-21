@@ -1,10 +1,10 @@
-# Strife Insurgence
+# Strife: Insurgence
 
-![Strife Insurgence](https://i.imgur.com/hmXCRBj.jpeg)
+![Strife: Insurgence](https://i.imgur.com/hmXCRBj.jpeg)
 
-- Get selaco: https://store.steampowered.com/app/317040/Strife_Veteran_Edition/
+- Get Strife: https://store.steampowered.com/app/317040/Strife_Veteran_Edition/
 
-This addon aims to add VR weapons and QoL improvements for VR in the game Strife. The mod uses assets from Reikall's and Segeant_Mark_IV mods.
+This addon aims to add VR weapons and QoL improvements for VR in the game Strife. The mod uses assets from strife mods by Reikall and Segeant_Mark_IV.
 
 [![Download Now](https://raster.shields.io/github/downloads/iAmErmac/Strife-Insurgence/total)](https://github.com/iAmErmac/Strife-Insurgence/releases/latest)
 
@@ -18,15 +18,23 @@ This addon aims to add VR weapons and QoL improvements for VR in the game Strife
 
 ## Installation
 
-Load this mods after Strife wad.
+Load this mod after Strife/Animosity wad.
 
 If you own Strife/Veteran Edition:
 
-	Load order: strife1.wad + voices.wad + (Latest Strife Insurgence Mod)
+- Strife (1996) Load order: strife1.wad + voices.wad + (Latest Strife Insurgence Mod)
+- Strife Veteran Edition Load order: sve.wad + voices.wad + (Latest Strife Insurgence Mod)
 	
-If you don't own Strife yet (with Animosity and Strife shareware):
+If you don't own Strife yet:
 
-	Load order: FREESTRIF.wad (Animosity) + STRIFE0.WAD (Strife shareware v1.1) + (add map from recommended map section) + (Latest Strife Insurgence Mod)
+- Download Animosity and Strife Shareware: https://github.com/iAmErmac/Strife-Insurgence/releases/tag/archive
+- Load order: FREESTRIF.wad (Animosity) + STRIFE0.WAD (Strife shareware v1.1) + (add map from recommended map section) + (Latest Strife Insurgence Mod)
+
+It is highly recommended to purchase Strife from Steam or GOG to play this VR mod. Animosity (FreeStrife) is able to load assets from the Strife Shareware but you will miss out the entire Strife campaign without Strife/Veteran Edition wad
+
+### GZDoomVR (PC-VR)
+
+Unfortunately this mod is not compatible with GZDoomVR for the lack of off-hand support in VR
 
 ### QuestZDoom (PC-VR)
 
@@ -101,6 +109,9 @@ If you don't own Strife:
   - This is a fun little mod that unifies some of the maps from other WADs (like Doom, Heretic) and adds some additional content alongside that too.
 
 ## Recommended mods to combine with:
+
+* [Liquid Texture Pack V6](https://forum.zdoom.org/viewtopic.php?t=72304):
+  - This is a shader pack that replaces all of the original liquid textures in GZDoom engine for a more modern looking effect. This archived version here is a special modified version for QuestZDoom by [Emawind](https://github.com/emawind84/doom-mod-liquid-texture-pack) which has been further modified by Ermac to work with Strife
 
 * [VR Flashlight:](https://github.com/iAmErmac/VR-Flashlight)
   - Since the included flashlight has been removed, you are required to use this Flashlight mod instead

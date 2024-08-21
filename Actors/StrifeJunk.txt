@@ -1,0 +1,500 @@
+ACTOR XJunk1: XDeath1
+{
+    +CLIENTSIDEONLY
+	+DONTSPLASH
+	+DOOMBOUNCE
+	BounceFactor 0.5
+    Speed 14
+	Gravity 0.8
+    DeathSound "none"
+	SeeSound "none"
+	Decal None
+    Scale 1.0
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        JNK6 ABCD 3
+        Loop
+    Death:
+
+        //TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
+        JNK6 A 2000
+        Stop
+    Splash:
+        TNT1 A 1
+		JNK6 A -1
+        Stop
+    }
+}
+
+
+ACTOR XJunk2: XJunk1
+{
+    BounceFactor 0.3
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        JNK7 ABCD 3
+        Loop
+    Death:
+
+        //TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
+        JNK7 A 2000
+        Stop
+    Splash:
+        TNT1 A 1
+		JNK7 A -1
+        Stop
+    }
+}
+
+
+ACTOR XJunk3: XJunk1
+{
+    BounceFactor 0.7
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        JNK8 ABCD 3
+        Loop
+    Death:
+
+        //TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
+        JNK8 A 2000
+        Stop
+    Splash:
+        TNT1 A 1
+		JNK8 A -1
+        Stop
+    }
+}
+
+
+ACTOR XJunk4: XJunk1
+{
+    -DOOMBOUNCE
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        JNK4 ABCD 3
+        Loop
+    Death:
+
+        //TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
+        JNK4 A 2000
+        Stop
+    Splash:
+        TNT1 A 1
+		JNK4 A -1
+        Stop
+    }
+}
+
+
+ACTOR XJunk5: XJunk1
+{
+    -DOOMBOUNCE
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        JNK5 ABCD 3
+        Loop
+    Death:
+
+        //TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
+        JNK5 A 2000
+        Stop
+    Splash:
+        TNT1 A 1
+		JNK5 A -1
+        Stop
+    }
+}
+
+
+
+
+
+
+
+
+
+ACTOR XDeathCrusader1: XJunk1
+{
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        RBG1 ABCD 5
+        Loop
+    Death:
+
+        //TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
+        RBG1 A 2000
+        Stop
+    Splash:
+        TNT1 A 1
+		RBG1 A -1
+        Stop
+    }
+}
+
+
+ACTOR XDeathCrusader2: XJunk1
+{
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        RBG2 ABCD 5
+        Loop
+    Death:
+
+        //TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
+        RBG2 A 2000
+        Stop
+    Splash:
+        TNT1 A 1
+		RBG2 A -1
+        Stop
+    }
+}
+
+
+
+ACTOR XDeathCrusader3: XJunk1
+{
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        RBG3 ABCD 5
+        Loop
+    Death:
+
+        //TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
+        RBG3 E 2000
+        Stop
+    Splash:
+        TNT1 A 1
+		RBG3 E -1
+        Stop
+    }
+}
+
+
+ACTOR XDeathSentinel1: XJunk1
+{
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        RBG4 ABCD 5
+        Loop
+    Death:
+
+        //TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
+        RBG4 A 2000
+        Stop
+    Splash:
+        TNT1 A 1
+		RBG4 A -1
+        Stop
+    }
+}
+
+
+
+ACTOR XDeathTankPart1: XJunk1
+{
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        X2D1 ABCD 5
+        Loop
+    Death:
+
+        //TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
+        X2D1 C 2000
+        Stop
+    Splash:
+        TNT1 A 1
+		X2D1 C -1
+        Stop
+    }
+}
+
+
+
+ACTOR XGlass1: XJunk1
+{
+Gravity 0.8
+Speed 15
++DOOMBOUNCE
+BounceFactor 0.5
+Renderstyle Add
+Alpha 0.9
+    States
+    {
+    Spawn:
+        XSP1 ABCD 5
+        Loop
+    Death:
+        SHRD D 2000
+        Stop
+ 
+    }
+}
+
+
+ACTOR XGlass2: XJunk1
+{
+Gravity 0.8
+Speed 15
+-DOOMBOUNCE
+Renderstyle Add
+Alpha 0.9
+    States
+    {
+    Spawn:
+        XSP1 ABCD 5
+        Loop
+    Death:
+        SHRD E 2000
+        Stop
+ 
+    }
+}
+
+ACTOR FallingTank1: XJunk1
+{
+Gravity 1.0
+Speed 6
+-DOOMBOUNCE
+    States
+    {
+    Spawn:
+        XT11 A 5
+        Loop
+    Death:
+	    TNT1 AA 0 A_CustomMissile ("XDeathTankPart1", 12, 0, random (0, 360), 2, random (50, 130))
+	TNT1 A 0 A_PlaySound("DSGLXSS", 1)
+	TNT1 A 0 A_Explode(512, 128)
+	EXPL A 0 Radius_Quake (2, 54, 0, 15, 0)
+	TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("WaterParticle", 32, 0, random (0, 360), 2, random (40, 140))
+	TNT1 AAAAAAA 0 A_CustomMissile ("XGlass1", 1, 0, random (0, 360), 2, random (40, 140))
+	TNT1 AAAAAAA 0 A_CustomMissile ("XGlass2", 1, 0, random (0, 360), 2, random (40, 140))
+	TNT1 A 0 A_SpawnItem("DeadExperiement2")
+        TNT1 A 0
+        Stop
+ 
+    }
+}
+
+ACTOR FallingTank2: XJunk1
+{
+Gravity 1.0
+Speed 6
+-DOOMBOUNCE
+    States
+    {
+    Spawn:
+        XT11 B 5
+        Loop
+    Death:
+	    TNT1 AA 0 A_CustomMissile ("XDeathTankPart1", 12, 0, random (0, 360), 2, random (50, 130))
+	TNT1 A 0 A_PlaySound("DSGLXSS", 1)
+	TNT1 A 0 A_Explode(512, 128)
+	EXPL A 0 Radius_Quake (2, 54, 0, 15, 0)
+	TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("WaterParticle", 32, 0, random (0, 360), 2, random (40, 140))
+	TNT1 AAAAAAA 0 A_CustomMissile ("XGlass1", 1, 0, random (0, 360), 2, random (40, 140))
+	TNT1 AAAAAAA 0 A_CustomMissile ("XGlass2", 1, 0, random (0, 360), 2, random (40, 140))
+	TNT1 A 0 A_SpawnItem("DeadExperiement2")
+        TNT1 A 0
+        Stop
+ 
+    }
+}
+
+
+
+ACTOR CandleParticle: XJunk1
+{
+Gravity 0.5
+Speed 4
++DOOMBOUNCE
+BounceFactor 0.1
+    States
+    {
+    Spawn:
+        CNDL P 5
+        Loop
+    Death:
+	    CNDL P 1
+		CNDL P -1
+        Stop
+ 
+    }
+}
+
+
+
+
+
+
+
+ACTOR XDeathInquisitor1: XJunk1
+{
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        X3D1 ABCD 5
+        Loop
+    Death:
+
+        //TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
+        X3D1 E 2000
+        Stop
+    Splash:
+        TNT1 A 1
+		X3D1 E -1
+        Stop
+    }
+}
+
+
+ACTOR XDeathInquisitor2: XJunk1
+{
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        X3D2 ABCD 5
+        Loop
+    Death:
+
+        //TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
+        X3D2 A 2000
+        Stop
+    Splash:
+        TNT1 A 1
+		X3D2 A -1
+        Stop
+    }
+}
+
+
+
+ACTOR XDeathReaver1: XJunk1
+{
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        X3D3 ABCD 5
+        Loop
+    Death:
+
+        X3D3 A 2000
+        Stop
+    Splash:
+        TNT1 A 1
+		X3D3 A -1
+        Stop
+    }
+}
+
+
+ACTOR XDeathReaver2: XJunk1
+{
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        X3D4 ABCD 5
+        Loop
+    Death:
+
+        X3D4 A 2000
+        Stop
+    Splash:
+        TNT1 A 1
+		X3D4 A -1
+        Stop
+    }
+}
+
+
+
+ACTOR StoneParticle1: XJunk1
+{
+Speed 8
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        XST1 A 5
+        Loop
+    Death:
+
+       XST1 B 1000
+        Stop
+    Splash:
+        XST1 B 1000
+        Stop
+    }
+}
+
+
+ACTOR StoneParticle2: StoneParticle1
+{
+-DOOMBOUNCE
+}
+
+
+
+
+
+ACTOR WoodenParticle1: XJunk1
+{
+Speed 8
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        XWOD ABCDEFGH 2
+        Loop
+    Death:
+
+       XWOD J 1000
+        Stop
+    Splash:
+        XWOD J 1000
+        Stop
+    }
+}
+
+
+ACTOR WoodenParticle2: WoodenParticle1
+{
+-DOOMBOUNCE
+States
+{
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        XWOD HGFEDCBA 2
+        Loop
+		
+    Death:
+       XWOD I 1000
+        Stop
+		}
+
+}

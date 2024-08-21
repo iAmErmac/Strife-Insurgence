@@ -1,0 +1,398 @@
+
+// Peasant Base Class -------------------------------------------------------
+
+ACTOR BrutalPeasant : StrifeHumanoid Replaces Peasant
+{
+	Health 70
+	GibHealth 15
+	PainChance 255
+	Speed 5
+	Radius 20
+	Height 56
+	Monster
+	+FRIENDLY
+	-COUNTKILL
+	+NOSPLASHALERT
+	-STANDSTILL
+	MinMissileChance 150
+	MaxStepHeight 16
+	MaxDropoffHeight 32
+	SeeSound "peasant/sight"
+	AttackSound "peasant/attack"
+	PainSound "peasant/pain"
+	DeathSound "peasant/death"
+	HitObituary "$OB_PEASANT"
+	Painchance "Alarm", 255
+	Painchance "Electric", 255
+	States
+	{
+	
+	Spawn:
+		PEAS A 10 A_Look2
+		Loop
+	See:
+		PEAS AAAABBBBCCCCDDDD 2 A_Wander
+		Loop
+	Frighten:
+	    TNT1 A 0
+		//TNT1 A 0 A_ChangeFlag("FRIGHTENED", 1)
+		PEAS AAAABBBBCCCCDDDD 1 A_Wander
+		Loop
+	Melee:
+		PEAS E 10 A_FaceTarget
+		PEAS F 8 A_CustomMeleeAttack(2*random[PeasantAttack](1,5)+2)
+		PEAS E 8
+		Goto See
+
+
+	Pain.Electric:
+	    TNT1 A 0
+	    TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
+	    PEAS O 8 BRIGHT
+		TNT1 AAA 0 A_CustomMissile ("BlueShockwave", 48, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AA 0 A_CustomMissile ("PlasmaSmoke", 48, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_PlaySound("weapons/xbowhit", 2)
+		PEAS O 8 A_Pain
+		
+		PEAS O 8 BRIGHT
+		TNT1 AAA 0 A_CustomMissile ("BlueShockwave", 48, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AA 0 A_CustomMissile ("PlasmaSmoke", 48, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_PlaySound("weapons/xbowhit", 2)
+		PEAS O 8 A_Pain
+		
+		PEAS O 8 BRIGHT
+		TNT1 AAA 0 A_CustomMissile ("BlueShockwave", 48, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AA 0 A_CustomMissile ("PlasmaSmoke", 48, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_PlaySound("weapons/xbowhit", 2)
+		PEAS O 8 A_Pain
+		
+		PEAS OOOOO 4 A_CustomMissile ("PlasmaSmoke", 48, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
+		TNT1 A 0 A_JumpIfCloser(150, "BegForLife")
+		Goto See
+		
+	Pain:
+	    TNT1 A 0 
+		PEAS O 3 
+		PEAS O 3 A_Pain
+		TNT1 A 0 A_Jump(255, "InFear", "BegForLife", "BegForLife")
+		Goto See
+
+	BegForLife:
+	    PSG3 A 10
+		PSG3 BCBCBCBCBCBCBCBBCBCBCBCBCBCBCBCBCB 5
+		PSG3 A 10
+		Goto Frighten
+	
+	Pain.Alarm:
+	InFear:
+	    TNT1 A 0
+		BEGI ABABABABABABABABABABABABABABAABABAB 5
+		Goto Frighten
+		
+	
+	Death.Electric:
+	PEAS O 8 BRIGHT
+		TNT1 AAA 0 A_CustomMissile ("BlueShockwave", 48, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AA 0 A_CustomMissile ("PlasmaSmoke", 48, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_PlaySound("weapons/xbowhit", 2)
+		PEAS O 8 A_Pain
+		
+		PEAS O 8 BRIGHT
+		TNT1 AAA 0 A_CustomMissile ("BlueShockwave", 48, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AA 0 A_CustomMissile ("PlasmaSmoke", 48, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_PlaySound("weapons/xbowhit", 2)
+		PEAS O 8 A_Pain
+		
+		PEAS O 8 BRIGHT
+		TNT1 AAA 0 A_CustomMissile ("BlueShockwave", 48, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AA 0 A_CustomMissile ("PlasmaSmoke", 48, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_PlaySound("weapons/xbowhit", 2)
+		PEAS O 8 A_Pain
+		Goto Death
+	Death:
+	    TNT1 A 0
+		TNT1 A 0 A_Jump(192, "Death2", "Death3")
+	    PEAS G 5
+		PEAS H 10 A_Pain
+		PEAS I 6
+		
+		PEAS H 10 A_Pain
+		PEAS I 6
+		
+		PEAS H 5 A_Scream
+		PEAS I 6
+		PEAS J 5 A_NoBlocking
+		PEAS K 5
+		PEAS L 6
+		PEAS M 8
+		PEAS N 2500
+		Stop
+	
+	Death2:
+	    PSG1 A 4 A_Scream
+		TNT1 A 0 A_NoBlocking
+		TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("FlyingBlood", 38, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAA 0 A_CustomMissile ("XGib4", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAA 0 A_CustomMissile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
+		PSG1 BCDEFGHI 3
+		PSG1 I 2500
+		Stop
+		
+	Death3:
+	    PSG2 A 6 A_Scream
+		TNT1 A 0 A_NoBlocking
+		TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("FlyingBlood", 38, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAA 0 A_CustomMissile ("XGib4", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("GenericArm1", 32, 0, random (0, 360), 2, random (0, 160))
+		PSG2 BCD 6
+		PSG2 D 2500
+		Stop	
+	
+	XDeath:
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_CustomMissile ("XDeathHeart1", 52, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_CustomMissile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("FlyingBlood", 58, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_CustomMissile ("XGib1", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAA 0 A_CustomMissile ("XGib2", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAA 0 A_CustomMissile ("XGib3", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("XGib4", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_CustomMissile ("XGib5", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_CustomMissile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_CustomMissile ("AcolyteLeg1", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("GenericArm1", 52, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("GenericArm2", 52, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("PeasantHead", 52, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_XScream
+		Stop
+		
+		Disintegrate:
+		DISR A 3 BRIGHT A_PlaySoundEx("misc/disruptordeath", "Voice")
+		DISR B 3 BRIGHT A_NoBlocking
+		DISR CD 3 BRIGHT
+		TNT1 AA 0 A_CustomMissile ("CarbonizedArm", 48, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_CustomMissile ("CarbonizedHead", 48, 0, random (0, 360), 2, random (50, 130))
+		TNT1 AAAAAAAA 6 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (50, 130))	
+	    Stop
+		
+						Death.CrusH:
+		TNT1 AAA 0 A_CustomMissile ("XDeath1", 32, 0, random (0, 360), 2, random (150, 180))
+		TNT1 AAAAAAAAAAAAAA 0 A_CustomMissile ("FlyingBlood", 58, 0, random (0, 360), 2, random (150, 180))
+		TNT1 AAAAA 0 A_CustomMissile ("XGib1", 32, 0, random (0, 360), 2, random (150, 180))
+		TNT1 AAAAAAAA 0 A_CustomMissile ("XGib2", 32, 0, random (0, 360), 2, random (150, 180))
+		TNT1 AAAAAAAA 0 A_CustomMissile ("XGib3", 32, 0, random (0, 360), 2, random (150, 180))
+		TNT1 AAAAAAAAAAAAAA 0 A_CustomMissile ("XGib4", 32, 0, random (0, 360), 2, random (150, 180))
+		TNT1 AA 0 A_CustomMissile ("XGib5", 32, 0, random (0, 360), 2, random (150, 180))
+		TNT1 AAA 0 A_CustomMissile ("Instestin", 32, 0, random (0, 360), 2, random (150, 180))
+		
+		TNT1 A 0 A_XScream
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0
+		Stop
+	}
+}
+
+// Peasant Variant 1 --------------------------------------------------------
+
+ACTOR BrutalPeasantPeasant1 : BrutalPeasant Replaces Peasant1
+{
+	Game Strife
+	ConversationID 6
+}
+
+ACTOR BrutalPeasantPeasant2 : BrutalPeasant Replaces Peasant2
+{
+	Game Strife
+	ConversationID 7
+	Speed 5
+}
+
+ACTOR BrutalPeasantPeasant3 : BrutalPeasant Replaces Peasant3
+{
+	Game Strife
+	ConversationID 8
+}
+
+//Harris, Tevick
+ACTOR BrutalPeasantPeasant4 : BrutalPeasant Replaces Peasant4
+{
+	Game Strife
+	Translation 0
+	ConversationID 9
+}
+
+ACTOR BrutalPeasantPeasant5 : BrutalPeasant Replaces Peasant5
+{
+	Game Strife
+	Translation 0
+	ConversationID 10
+}
+
+ACTOR BrutalPeasantPeasant6 : BrutalPeasant Replaces Peasant6
+{
+	Game Strife
+	Translation 0
+	ConversationID 11
+	Speed 7
+}
+
+ACTOR BrutalPeasantPeasant7 : BrutalPeasant Replaces Peasant7
+{
+	Game Strife
+	Translation 2
+	ConversationID 12
+}
+
+ACTOR BrutalPeasantPeasant8 : BrutalPeasant Replaces Peasant8
+{
+	Game Strife
+	Translation 2
+	ConversationID 13
+}
+
+ACTOR BrutalPeasantPeasant9 : BrutalPeasant Replaces Peasant9
+{
+	Game Strife
+	Translation 2
+	ConversationID 14
+}
+
+//Rowan
+ACTOR BrutalPeasantPeasant10 : BrutalPeasant Replaces Peasant10
+{
+	Game Strife
+	Translation 1
+	ConversationID 15
+	DamageFactor "Dagger", 15.0
+	States
+	{
+	Death.Dagger:
+	TNT1 A 0 
+	TNT1 A 0 
+	TNT1 A 0 A_GiveToTarget("HasDarkRedHostage", 1)
+	TNT1 A 0 A_GiveToTarget("HasHostage", 1)
+	Stop
+	}
+}
+
+ACTOR BrutalPeasantPeasant11 : BrutalPeasant Replaces Peasant11
+{
+	Game Strife
+	Translation 1
+	ConversationID 16
+}
+
+ACTOR BrutalPeasantPeasant12 : BrutalPeasant Replaces Peasant12
+{
+	Game Strife
+	Translation 1
+	ConversationID 17
+}
+
+ACTOR BrutalPeasantPeasant13 : BrutalPeasant Replaces Peasant13
+{
+	Game Strife
+	Translation 3
+	ConversationID 18
+}
+
+ACTOR BrutalPeasantPeasant14 : BrutalPeasant Replaces Peasant14
+{
+	Game Strife
+	Translation 3
+	ConversationID 19
+}
+
+ACTOR BrutalPeasantPeasant15 : BrutalPeasant Replaces Peasant15
+{
+	Game Strife
+	Translation 3
+	ConversationID 20
+}
+
+ACTOR BrutalPeasantPeasant16 : BrutalPeasant Replaces Peasant16
+{
+	Game Strife
+	Translation 5
+	ConversationID 21
+}
+
+ACTOR BrutalPeasantPeasant17 : BrutalPeasant Replaces Peasant17
+{
+	Game Strife
+	Translation 5
+	ConversationID 22
+}
+
+ACTOR BrutalPeasantPeasant18 : BrutalPeasant Replaces Peasant18
+{
+	Game Strife
+	Translation 5
+	ConversationID 23
+}
+
+ACTOR BrutalPeasantPeasant19 : BrutalPeasant Replaces Peasant19
+{
+	Game Strife
+	Translation 4
+	ConversationID 24
+}
+
+ACTOR BrutalPeasantPeasant20 : BrutalPeasant Replaces Peasant20
+{
+	Game Strife
+	Translation 4
+	ConversationID 25
+}
+
+ACTOR BrutalPeasantPeasant21 : BrutalPeasant Replaces Peasant21
+{
+	Game Strife
+	Translation 4
+	ConversationID 26
+}
+
+
+//Governor
+ACTOR BrutalPeasantPeasant22 : BrutalPeasant Replaces Peasant22
+{
+	Game Strife
+	Translation 6
+	ConversationID 27
+	DamageFactor "Dagger", 15.0
+	States
+	{
+	Death.Dagger:
+	TNT1 A 0 
+	TNT1 A 0 
+	TNT1 A 0 A_GiveToTarget("HasBlueHostage", 1)
+	TNT1 A 0 A_GiveToTarget("HasHostage", 1)
+	Stop
+	}
+}
+
+
+
+
+
+
+ACTOR FrightenedBluePeasant: BrutalPeasantPeasant22
+{
+	+PUSHABLE
+	Radius 16
+	Height 4
+	DamageFactor "Alarm", 0
+	States
+	{
+	Spawn:
+		BEGI AB 10
+		Loop
+	Death.Dagger:
+	TNT1 A 0 A_NoBlocking
+	TNT1 A 0 A_Scream
+	TNT1 A 0 A_GiveToTarget("HasBlueHostage", 1)
+	TNT1 A 0 A_GiveToTarget("HasHostage", 1)
+	Stop	
+	}
+}

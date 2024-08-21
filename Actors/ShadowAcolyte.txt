@@ -1,0 +1,6 @@
+ACTOR BrutalShadowAcolyte : BrutalAcolyte Replaces AcolyteShadow
+{
+Game Strife
+Renderstyle Translucent
+Alpha 0.3
+}

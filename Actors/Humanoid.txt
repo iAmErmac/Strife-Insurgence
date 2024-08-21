@@ -1,0 +1,20 @@
+
+// Humanoid Base Class ------------------------------------------------------
+
+
+ACTOR BrutalStrifeHumanoid: StrifeHumanoid Replaces StrifeHumanoid
+{
+	MaxStepHeight 16
+	MaxDropoffHeight 32
+	States
+	{
+	Disintegrate:
+		DISR A 3 BRIGHT A_PlaySoundEx("misc/disruptordeath", "Voice")
+		DISR B 3 BRIGHT A_NoBlocking
+		DISR CD 3 BRIGHT
+		TNT1 AA 0 A_CustomMissile ("CarbonizedArm", 48, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_CustomMissile ("CarbonizedHead", 48, 0, random (0, 360), 2, random (50, 130))
+		TNT1 AAAAAAAA 6 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (50, 130))
+	 Stop
+	}
+}

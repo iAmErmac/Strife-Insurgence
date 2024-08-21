@@ -1,0 +1,1574 @@
+ACTOR BrutalMug Replaces Mug
+{
+	Game Strife
+	ConversationID 132, -1, -1
+	+SHOOTABLE
+	Health 1
+	+NOBLOOD
+	+PUSHABLE
+	DamageFactor "Alarm", 0
+	Radius 4
+	Height 4
+	States
+	{
+	Spawn:
+		MUGG A -1
+		Stop
+	Death:
+	    MUGG A 1 A_Pain
+		MUGG A 1 A_FaceTarget
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Scream
+		TNT1 A 0 A_CustomMissile ("KickedMug", 5, 0, random (170, 190), 2, random (20, 40))
+		TNT1 A 0
+		Stop
+		
+	}
+}
+
+ACTOR KickedMug
+{
+    Radius 4
+    Height 4
+	Speed 6
+	Mass 1
+    gravity 0.5
+	BounceFactor 0.4
+	+DOOMBOUNCE
+    +MOVEWITHSECTOR
+    +CLIENTSIDEONLY
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn:
+		MUGG ABCD 5
+		Loop
+	Death:
+	    TNT1 A 0
+		TNT1 A 0 A_SpawnItem("MugKickedResting")
+        Stop
+    }
+}
+
+ACTOR MugKickedResting: BrutalMUg
+{
+	States
+	{
+	Spawn:
+		MUGG D -1
+		Stop
+	}
+}
+
+
+
+
+
+
+
+
+ACTOR BrutalSmallTorchLit Replaces SmallTorchLit
+{
+	Game Strife
+	Radius 4
+	Height 64
+	+NOBLOCKMAP
+	+FIXMAPTHINGPOS
+	ConversationID 241, -1, -1
+
+	States
+	{
+	Spawn:
+	    TNT1 A 0 A_CheckSight("Spawn2")
+		TRHL AB 2 Bright A_SpawnItem("YellowFlareSmall2B", 0, 50)
+		TNT1 A 0 A_CustomMissile ("TorchFlameTrails", 45, 0, random (0, 360), 2, random (70, 110))
+		TRHL CD 2 Bright A_SpawnItem("YellowFlareSmall2B", 0, 50)
+		TNT1 A 0 A_CustomMissile ("TorchFlameTrails", 45, 0, random (0, 360), 2, random (70, 110))
+		TRHL AB 2 Bright A_SpawnItem("YellowFlareSmall2B", 0, 50)
+		TNT1 A 0 A_CustomMissile ("TorchFlameTrails", 45, 0, random (0, 360), 2, random (70, 110))
+		TRHL CD 2 Bright A_SpawnItem("YellowFlareSmall2B", 0, 50)
+		TNT1 A 0 A_CustomMissile ("TorchFlameTrails", 45, 0, random (0, 360), 2, random (70, 110))
+		Loop
+	Spawn2:
+	    TRHL ABCD 1
+		Goto Spawn
+	}
+}
+
+
+ACTOR BrutalLargeTorch Replaces LargeTorch
+{
+	Game Strife
+	Radius 6
+	Height 72
+	+NOBLOCKMAP
+	+FIXMAPTHINGPOS
+	ConversationID 264, -1, -1
+
+	States
+	{
+	Spawn:
+	    TNT1 A 0 A_CheckSight("Spawn2")
+		LMPC AB 2 Bright A_SpawnItem("YellowFlare2B", 0, 60)
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 55, 0, random (0, 360), 2, random (70, 110))
+		LMPC CD 2 Bright A_SpawnItem("YellowFlare2B", 0, 60)
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 55, 0, random (0, 360), 2, random (70, 110))
+		LMPC AB 2 Bright A_SpawnItem("YellowFlare2B", 0, 60)
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 55, 0, random (0, 360), 2, random (70, 110))
+		LMPC CD 2 Bright A_SpawnItem("YellowFlare2B", 0, 60)
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 55, 0, random (0, 360), 2, random (70, 110))
+		Loop
+	Spawn2:
+	    LMPC ABCD 1
+		Goto Spawn
+	}
+}
+
+
+
+ACTOR BrutalMediumTorch Replaces MediumTorch
+{
+	Game Strife
+	Radius 6
+	Height 72
+	+NOBLOCKMAP
+	+FIXMAPTHINGPOS
+	ConversationID 241, -1, -1
+
+	States
+	{
+	Spawn:
+	    TNT1 A 0 A_CheckSight("Spawn2")
+		LTRH AB 2 Bright A_SpawnItem("YellowFlare2B", 0, 60)
+		TNT1 A 0 A_CustomMissile ("TorchFlameTrails", 55, 0, random (0, 360), 2, random (70, 110))
+		LTRH CD 2 Bright A_SpawnItem("YellowFlare2B", 0, 60)
+		TNT1 A 0 A_CustomMissile ("TorchFlameTrails", 55, 0, random (0, 360), 2, random (70, 110))
+		LTRH AB 2 Bright A_SpawnItem("YellowFlare2B", 0, 60)
+		TNT1 A 0 A_CustomMissile ("TorchFlameTrails", 55, 0, random (0, 360), 2, random (70, 110))
+		LTRH CD 2 Bright A_SpawnItem("YellowFlare2B", 0, 60)
+		TNT1 A 0 A_CustomMissile ("TorchFlameTrails", 55, 0, random (0, 360), 2, random (70, 110))
+		Loop
+	Spawn2:
+	    LTRH ABCD 1
+		Goto Spawn
+	}
+}
+
+
+ACTOR BrutalHugeTorch Replaces HugeTorch
+{
+	Game Strife
+	Radius 6
+	Height 72
+	+NOBLOCKMAP
+	+FIXMAPTHINGPOS
+	ConversationID 265, -1, -1
+    ActiveSound "props/redfire"
+	States
+	{
+	Spawn:
+	    TNT1 A 0 A_CheckSight("Spawn2")
+		LOGS AB 2 Bright A_SpawnItem("YellowFlare2B", 0, 70)
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 65, 0, random (0, 360), 2, random (70, 110))
+		LOGS CD 2 Bright A_SpawnItem("YellowFlare2B", 0, 70)
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 65, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 bright A_CustomMissile ("BrassParticle1", 60, 0, random (0, 360), 2, random (80, 100))
+		LOGS AB 2 Bright A_SpawnItem("YellowFlare2B", 0, 70)
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 65, 0, random (0, 360), 2, random (70, 110))
+		LOGS CD 2 Bright A_SpawnItem("YellowFlare2B", 0, 70)
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 65, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 bright A_CustomMissile ("BrassParticle1", 60, 0, random (0, 360), 2, random (80, 100))
+		TNT1 A 0 A_LoopActiveSound
+		Loop
+	Spawn2:
+	    LMPC ABCD 1
+		Goto Spawn
+	}
+}
+
+ACTOR BrutalBurningBrazier Replaces BurningBrazier
+{
+	Game Strife
+	Radius 10
+	Height 64
+	+SOLID
+	ConversationID 240, -1, -1
+	ActiveSound "props/redfire"
+	States
+	{
+	Spawn:
+	    TNT1 A 0 A_CheckSight("Spawn2")
+		BRAZ AB 2 Bright A_SpawnItem("YellowFlare2B", 0, 30)
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 30, 0, random (0, 360), 2, random (70, 110))
+		BRAZ CD 2 Bright A_SpawnItem("YellowFlare2B", 0, 30)
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 30, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 bright A_CustomMissile ("BrassParticle1", 30, 0, random (0, 360), 2, random (80, 100))
+		BRAZ AB 2 Bright A_SpawnItem("YellowFlare2B", 0, 30)
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 30, 0, random (0, 360), 2, random (70, 110))
+		BRAZ CD 2 Bright A_SpawnItem("YellowFlare2B", 0, 30)
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 30, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 bright A_CustomMissile ("BrassParticle1", 30, 0, random (0, 360), 2, random (80, 100))
+		TNT1 A 0 A_LoopActiveSound
+		//TNT1 A 0 A_PlaySound("props/redfire", 1)
+		Loop
+	Spawn2:
+	    BRAZ ABCD 1
+		Goto Spawn
+	}
+}
+
+
+ACTOR BrutalBurningBowl Replaces BurningBowl
+{
+	Game Strife
+	Radius 16
+	Height 48
+	+SOLID
+	ConversationID 239, -1, -1
+	ActiveSound "props/redfire"
+	States
+	{
+	Spawn:
+	    TNT1 A 0 A_CheckSight("Spawn2")
+		BOWL AB 2 Bright A_SpawnItem("YellowFlare2B", 0, 15)
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 15, 0, random (0, 360), 2, random (70, 110))
+		BOWL CD 2 Bright A_SpawnItem("YellowFlare2B", 0, 15)
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 15, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 bright A_CustomMissile ("BrassParticle1", 15, 0, random (0, 360), 2, random (80, 100))
+		BOWL AB 2 Bright A_SpawnItem("YellowFlare2B", 0, 15)
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 15, 0, random (0, 360), 2, random (70, 110))
+		BOWL CD 2 Bright A_SpawnItem("YellowFlare2B", 0, 15)
+		TNT1 A 0 bright A_CustomMissile ("BrassParticle1", 15, 0, random (0, 360), 2, random (80, 100))
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 15, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_LoopActiveSound
+		//TNT1 A 0 A_PlaySound("props/redfire", 1)
+		Loop
+	Spawn2:
+	    BOWL ABCD 1
+		Goto Spawn
+	}
+}
+
+
+ACTOR BrutalStrifeBurningBarrel Replaces StrifeBurningBarrel
+{
+	Game Strife
+	Radius 16
+	Height 64
+	+SOLID
+	ConversationID 239, -1, -1
+	ActiveSound "props/redfire"
+	States
+	{
+	Spawn:
+	    TNT1 A 0 A_CheckSight("Spawn2")
+		BBAR AB 2 Bright A_SpawnItem("YellowFlare2B", 0, 35)
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 25, 0, random (0, 360), 2, random (70, 110))
+		BBAR CD 2 Bright A_SpawnItem("YellowFlare2B", 0, 35)
+		TNT1 A 0 bright A_CustomMissile ("BrassParticle1", 35, 0, random (0, 360), 2, random (80, 100))
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 25, 0, random (0, 360), 2, random (70, 110))
+		BBAR AB 2 Bright A_SpawnItem("YellowFlare2B", 0, 35)
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 25, 0, random (0, 360), 2, random (70, 110))
+		BBAR CD 2 Bright A_SpawnItem("YellowFlare2B", 0, 35)
+		TNT1 A 0 bright A_CustomMissile ("BrassParticle1", 35, 0, random (0, 360), 2, random (80, 100))
+		TNT1 A 0 A_CustomMissile ("RealFlameTrailsSmall", 25, 0, random (0, 360), 2, random (70, 110))
+		//TNT1 A 0 A_PlaySound("props/redfire")
+		TNT1 A 0 A_LoopActiveSound
+		Loop
+	Spawn2:
+	    BBAR ABCD 1
+		Goto Spawn
+	}
+}
+
+
+
+
+
+
+
+
+
+ACTOR BrutalKlaxonWarningLight Replaces KlaxonWarningLight
+{
+	Game Strife
+	ConversationID 121,-1,-1
+	ReactionTime 60
+	Radius 12
+	Height 16
+	+AMBUSH
+	+SPAWNCEILING +NOGRAVITY
+	+FIXMAPTHINGPOS +NOSPLASHALERT
+	+SHOOTABLE
+	+NOBLOOD
+	+SOLID
+	-INVULNERABLE
+	Mass 999999
+	Health 50
+	PainChance 255
+	States
+	{
+	Spawn:
+		KLAX A 5 A_TurretLook
+		Loop
+	Pain.Alert:
+	Goto See
+	Pain:
+	See:
+		KLAX B 6 A_KlaxonBlare
+		TNT1 A 0 A_AlertMonsters
+		KLAX CCCCCCCCCC 2 BRIGHT A_SpawnItem("RedFlareSmall2b")
+		KLAX B 20
+		KLAX CCCCCCCCCC 2 BRIGHT A_SpawnItem("RedFlareSmall2b")
+		Loop
+	Death:	
+	TNT1 A 0
+	TNT1 A 0 A_Explode(64, 64, 1, 1)
+	TNT1 A 0 A_CustomMissile ("MetalShard1", 5, 0, random (0, 360), 2, random (30, 160))
+	TNT1 A 0 A_CustomMissile ("MetalShard2", 5, 0, random (0, 360), 2, random (30, 160))
+	TNT1 A 0 A_CustomMissile ("MetalShard3", 5, 0, random (0, 360), 2, random (30, 160))
+	TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+    TNT1 AAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+    TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
+    TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360)) 
+    TNT1 AAAAAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+    EXPL AAA 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAAAA 1 A_CustomMissile ("ExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_PlaySound("FAREXPL", 3)
+	Stop
+	}
+
+}
+
+
+
+
+
+
+ACTOR BrutalWaterfallSplash Replaces WaterfallSplash
+{
+	Game Strife
+	+NOBLOCKMAP
+	+RANDOMIZE
+	ConversationID 225, -1, -1
+	ActiveSound "world/waterfall"
+	States
+	{
+	Spawn:
+	    TNT1 AAAA 1 A_CustomMissile ("WaterParticle", 2, 0, random (0, 360), 2, random (30, 150))
+		TNT1 A 1 A_LoopActiveSound
+		Loop
+	}
+}
+
+ACTOR BrutalWaterFountain Replaces WaterFountain
+{
+	Game Strife
+	+NOBLOCKMAP
+	ConversationID 227, -1, -1
+	ActiveSound "world/watersplash"
+	Renderstyle Add
+	States
+	{
+	Spawn:
+		CEYE ABC 2 A_CustomMissile ("WaterParticle", 52, 0, random (0, 360), 2, random (60, 120))
+		TNT1 A 0 A_LoopActiveSound
+		Loop
+	}
+}
+
+
+ACTOR BrutalWoodenBarrel Replaces WoodenBarrel
+{
+DamageFactor "Alarm", 0
+	Game Strife
+	Health 10
+	Radius 10
+	Height 32
+	+SOLID +SHOOTABLE +NOBLOOD
+	+INCOMBAT
+	+PUSHABLE
+	
+	DropItem "ClipOfBullets" 12
+	DropItem "ClipOfBullets" 12
+	DropItem "ElectricBolts" 12
+	DropItem "MedPatch" 12
+	DropItem "Coin" 22
+	DropItem "Coin" 22
+	DropItem "Coin" 22
+	DropItem "Coin" 22
+	DropItem "PoisonBolts" 3
+	DropItem "MiniMissiles" 3
+	DropItem "HEGrenadeRounds" 3
+	
+	ConversationID 203, -1, -1
+	DeathSound "woodenbarrel/death"
+	States
+	{
+	Spawn:
+		BARW A -1
+		Stop
+	Death:
+		BARW B 2 A_Scream
+		BARW C 2
+		BARW D 2 A_NoBlocking
+		BARW EFG 2
+		BARW H -1
+		Stop
+	XDeath:
+	    TNT1 A 0 A_Scream
+		TNT1 AAAAA 0 A_CustomMissile ("WoodenParticle1", 4, 0, random (0, 360), 2, random (40, 140))
+		TNT1 AAAAA 0 A_CustomMissile ("WoodenParticle2", 4, 0, random (0, 360), 2, random (40, 140))
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 1
+		Stop
+	}
+}
+
+ACTOR BrutalTub Replaces Tub
+{
+	Game Strife
+	+SOLID +SHOOTABLE +NOBLOOD
+	+PUSHABLE
+	Health 10
+	Radius 12
+	Height 8
+	DropItem "ClipOfBullets" 12
+	DropItem "ClipOfBullets" 12
+	DropItem "ElectricBolts" 12
+	DropItem "MedPatch" 12
+	DropItem "Coin" 22
+	DropItem "Coin" 22
+	DropItem "Coin" 22
+	DropItem "Coin" 22
+	DropItem "PoisonBolts" 3
+	DropItem "MiniMissiles" 3
+	DropItem "HEGrenadeRounds" 3
+	DeathSound "woodenbarrel/death"
+	ConversationID 278, -1, -1
+	States
+	{
+	Spawn:
+		TUB1 A -1
+		Stop
+	Death:	
+	TNT1 A 0 A_Scream
+	TNT1 AA 0 A_CustomMissile ("WoodenParticle1", 4, 0, random (0, 360), 2, random (40, 140))
+	TNT1 AA 0 A_CustomMissile ("WoodenParticle2", 4, 0, random (0, 360), 2, random (40, 140))
+	TNT1 A 0 A_NoBlocking
+	Stop
+	
+	}
+}
+
+
+
+
+
+
+
+
+
+
+ACTOR BrutalHeartsInTank Replaces HeartsInTank
+{
+DamageFactor "Alarm", 0
+	Game Strife
+	Radius 16
+	Height 56
+	+SOLID
+	+SHOOTABLE
+	+NOBLOOD
+	Health 100
+	Mass 1000
+	ConversationID 228, -1, -1
+	States
+	{
+	Spawn:
+		HERT ABC 4 Bright
+		Loop
+	Death:	
+	TNT1 A 0 A_CustomMissile ("XDeathTankPart1", 12, 0, random (0, 360), 2, random (50, 130))
+	TNT1 A 0 A_PlaySound("DSGLXSS")
+	TNT1 AAAA 0 A_CustomMissile ("XDeathHeart1", 1, 0, random (0, 360), 2, random (40, 140))
+	TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("WaterParticle", 32, 0, random (0, 360), 2, random (40, 140))
+	TNT1 AAAAAAA 0 A_CustomMissile ("XGlass1", 1, 0, random (0, 360), 2, random (40, 140))
+	TNT1 AAAAAAA 0 A_CustomMissile ("XGlass2", 1, 0, random (0, 360), 2, random (40, 140))
+	HERT D 15
+	TNT1 AAAAAAAAAAA 0 A_CustomMissile ("WaterParticle", 24, 0, random (0, 360), 2, random (40, 140))
+	HERT D 15
+	TNT1 AAAAAAAAAAA 0 A_CustomMissile ("WaterParticle", 16, 0, random (0, 360), 2, random (40, 140))
+	HERT D 15
+	TNT1 AAAAAAAAAAA 0 A_CustomMissile ("WaterParticle", 8, 0, random (0, 360), 2, random (40, 140))
+	HERT D -1
+	Loop
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+ACTOR DeadExperiement
+{
+	Game Strife
+	+NORADIUSDMG
+	Radius 24
+	Height 16
+	+SOLID
+	+SHOOTABLE
+	Health 100
+	Mass 1000
+	States
+	{
+	Spawn:
+		XBDY A 5
+		Loop
+	Death:
+	TNT1 A 0 A_NoBlocking
+	TNT1 AAA 0 A_CustomMissile ("XDeath1", 2, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("FlyingBloodFast", 58, 0, random (0, 360), 2, random (60, 120))
+		TNT1 AAA 0 A_CustomMissile ("XGib1", 2, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("XDeathHeart1", 2, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAA 0 A_CustomMissile ("XGib2", 2, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAA 0 A_CustomMissile ("XGib3", 3, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("XGib4", 2, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_CustomMissile ("XGib5", 2, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_CustomMissile ("Instestin", 2, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("GenericArm1", 2, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("GenericArm2", 2, 0, random (0, 360), 2, random (0, 160))
+	Stop
+	}
+}
+
+
+ACTOR DeadExperiement2: DeadExperiement
+{
+	States
+	{
+	Spawn:
+		XBDY B 5
+		Loop
+	}
+}
+
+
+ACTOR DeadExperiement3: DeadExperiement
+{
+-SOLID
+-SHOOTABLE
+	States
+	{
+	Spawn:
+		XBDY C 5
+		Loop
+	}
+}
+
+
+
+
+ACTOR AlienInATank Replaces Tank6
+{
+DamageFactor "Alarm", 0
+	Game Strife
+	Radius 16
+	Height 56
+	+SOLID
+	+SHOOTABLE
+	+NOBLOOD
+	Health 100
+	Mass 1000
+	ConversationID 36, -1, -1
+	States
+	{
+	Spawn:
+		TNK6 ABC 6 Bright
+		Loop
+	Death:	
+	TNT1 A 0 A_CustomMissile ("XDeathTankPart1", 12, 0, random (0, 360), 2, random (50, 130))
+	TNT1 A 0 A_PlaySound("DSGLXSS")
+	TNT1 A 0 A_SpawnItem("DeadExperiement3")
+	TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("WaterParticle", 32, 0, random (0, 360), 2, random (40, 140))
+	TNT1 AAAAAAA 0 A_CustomMissile ("XGlass1", 1, 0, random (0, 360), 2, random (40, 140))
+	TNT1 AAAAAAA 0 A_CustomMissile ("XGlass2", 1, 0, random (0, 360), 2, random (40, 140))
+	HERT D 15
+	TNT1 AAAAAAAAAAA 0 A_CustomMissile ("WaterParticle", 24, 0, random (0, 360), 2, random (40, 140))
+	HERT D 15
+	TNT1 AAAAAAAAAAA 0 A_CustomMissile ("WaterParticle", 16, 0, random (0, 360), 2, random (40, 140))
+	HERT D 15
+	TNT1 AAAAAAAAAAA 0 A_CustomMissile ("WaterParticle", 8, 0, random (0, 360), 2, random (40, 140))
+	HERT D -1
+	Loop
+	}
+}
+
+
+
+ACTOR BrutalTank4 Replaces Tank4
+{
+DamageFactor "Alarm", 0
+	Game Strife
+	Radius 16
+	Height 56
+	+SOLID
+	+SHOOTABLE
+	+NOBLOOD
+	Health 100
+	Mass 1000
+	ConversationID 34, -1, -1
+	States
+	{
+	Spawn:
+		TNK4 ABC 6 Bright
+		Loop
+	Death:	
+	TNT1 A 0 A_CustomMissile ("XDeathTankPart1", 12, 0, random (0, 360), 2, random (50, 130))
+	TNT1 A 0 A_PlaySound("DSGLXSS")
+	TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("WaterParticle", 32, 0, random (0, 360), 2, random (40, 140))
+	TNT1 AAAAAAA 0 A_CustomMissile ("XGlass1", 1, 0, random (0, 360), 2, random (40, 140))
+	TNT1 AAAAAAA 0 A_CustomMissile ("XGlass2", 1, 0, random (0, 360), 2, random (40, 140))
+	HERT D 15
+	TNT1 AAAAAAAAAAA 0 A_CustomMissile ("WaterParticle", 24, 0, random (0, 360), 2, random (40, 140))
+	HERT D 15
+	TNT1 AAAAAAAAAAA 0 A_CustomMissile ("WaterParticle", 16, 0, random (0, 360), 2, random (40, 140))
+	HERT D 15
+	TNT1 AAAAAAAAAAA 0 A_CustomMissile ("WaterParticle", 8, 0, random (0, 360), 2, random (40, 140))
+	HERT D -1
+	Loop
+	}
+}
+
+
+ACTOR BrutalTank5: BrutalTank4 Replaces Tank5
+{
+	ConversationID 35, -1, -1
+	States
+	{
+	Spawn:
+		TNK5 ABC 6 Bright
+		Loop
+	}
+}
+
+
+
+
+
+
+
+ACTOR BrutalHeartsInTank Replaces HeartsInTank
+{
+DamageFactor "Alarm", 0
+	Game Strife
+	Radius 16
+	Height 56
+	+SOLID
+	+SHOOTABLE
+	+NOBLOOD
+	Health 100
+	Mass 100000
+	ConversationID 228, -1, -1
+	States
+	{
+	Spawn:
+		HERT ABC 4 Bright
+		Loop
+	Death:	
+	TNT1 A 0 A_CustomMissile ("XDeathTankPart1", 12, 0, random (0, 360), 2, random (50, 130))
+	TNT1 A 0 A_PlaySound("DSGLXSS")
+	TNT1 AAAA 0 A_CustomMissile ("XDeathHeart1", 1, 0, random (0, 360), 2, random (40, 140))
+	TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("WaterParticle", 32, 0, random (0, 360), 2, random (40, 140))
+	TNT1 AAAAAAA 0 A_CustomMissile ("XGlass1", 1, 0, random (0, 360), 2, random (40, 140))
+	TNT1 AAAAAAA 0 A_CustomMissile ("XGlass2", 1, 0, random (0, 360), 2, random (40, 140))
+	HERT D 15
+	TNT1 AAAAAAAAAAA 0 A_CustomMissile ("WaterParticle", 24, 0, random (0, 360), 2, random (40, 140))
+	HERT D 15
+	TNT1 AAAAAAAAAAA 0 A_CustomMissile ("WaterParticle", 16, 0, random (0, 360), 2, random (40, 140))
+	HERT D 15
+	TNT1 AAAAAAAAAAA 0 A_CustomMissile ("WaterParticle", 8, 0, random (0, 360), 2, random (40, 140))
+	HERT D -1
+	Loop
+	}
+}
+
+
+
+
+
+ACTOR BrutalTank1 Replaces Tank1
+{
+DamageFactor "Alarm", 0
+	Game Strife
+	Radius 16
+	Height 192
+	+SOLID
+	+SHOOTABLE
+	+NOBLOOD
+	Health 100
+	Mass 100000
+	ConversationID 31, -1, -1
+	States
+	{
+	Spawn:
+		TNK1 A 15
+		TNK1 B 11
+		TNK1 C 40
+		Loop
+	Death:
+	TNT1 A 0 A_CustomMissile ("FallingTank1", 142, 0, random (0, 360), 2, random (40, 140))
+	TNT1 A 0 A_CustomMissile ("FallingTank2", 92, 0, random (0, 360), 2, random (40, 140))
+	TNT1 A 0 A_CustomMissile ("XDeathTankPart1", 12, 0, random (0, 360), 2, random (50, 130))
+	TNT1 A 0 A_PlaySound("DSGLXSS")
+	TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("WaterParticle", 32, 0, random (0, 360), 2, random (40, 140))
+	TNT1 AAAAAAA 0 A_CustomMissile ("XGlass1", 1, 0, random (0, 360), 2, random (40, 140))
+	TNT1 AAAAAAA 0 A_CustomMissile ("XGlass2", 1, 0, random (0, 360), 2, random (40, 140))
+	TNT1 A 0 A_SpawnItem("DeadExperiement1")
+	HERT D 1
+	HERT D -1
+	}
+}
+
+
+ACTOR BrutalTank2: BrutalTank1 Replaces Tank2
+{
+
+	ConversationID 32, -1, -1
+	States
+	{
+	Spawn:
+		TNK2 A 15
+		TNK2 B 11
+		TNK2 C 40
+		Loop
+	}
+}
+
+
+ACTOR BrutalTank3: BrutalTank1 Replaces Tank3
+{
+
+	ConversationID 33, -1, -1
+	States
+	{
+	Spawn:
+		TNK3 A 15
+		TNK3 B 11
+		TNK3 C 40
+		Loop
+	}
+}
+
+
+
+
+
+
+
+
+ACTOR BrutalOracle: Oracle Replaces Oracle
+{
+	Game Strife
+	ConversationID 65, 62, 63
+    DamageFactor "Alarm", 0
+}
+
+
+
+
+
+
+ACTOR BrutalCandle Replaces Candle
+{
+	Game Strife
+	ConversationID 222, -1, -1
+	Radius 6
+	Height 16
+	+SOLID
+	+SHOOTABLE
+	+NOBLOOD
+	Health 1
+	+NORADIUSDMG
+	Scale 1.2
+	States
+	{
+	Spawn:
+	    TNT1 A 0 A_CheckSight("Spawn2")
+		CNDL A 2 Bright A_SpawnItem("YellowFlareSmall2B", 0, 10)
+		Loop
+	Spawn2:
+	CNDL A 2 Bright
+	Goto Spawn
+	Death:
+	TNT1 A 0 A_NoBlocking
+	TNT1 AAAAAAA 0 A_CustomMissile ("CandleParticle", 1, 0, random (0, 360), 2, random (40, 140))
+	CNDL B 1
+	CNDL B -1
+	Stop
+	}
+}
+
+
+
+ACTOR BrutalStrifeCandelabra Replaces StrifeCandelabra
+{
+	Game Strife
+	Radius 16
+	Height 42
+	+SOLID
+	ConversationID 223, -1, -1
+	States
+	{
+	Spawn:
+	    TNT1 A 0 A_CheckSight("Spawn2")
+		CLBR A 2 Bright A_SpawnItem("YellowFlare2B", 0, 60)
+		Loop
+	Spawn2:
+	CLBR A 2 Bright
+	Goto Spawn
+	}
+}
+
+
+
+
+ACTOR BrutalWaterDrip Replaces WaterDrip
+{
+	Game Strife
+	Height 1
+	+NOBLOCKMAP +SPAWNCEILING +NOGRAVITY +FLOAT
+	ConversationID 226, -1, -1
+	States
+	{
+	Spawn:
+		CDRP A 20
+		CDRP BC 4
+		TNT1 A 0 A_SpawnItem("BrutalWaterDropOnFloor")
+		TNT1 D 4
+		Loop
+	}
+}
+
+ACTOR BrutalWaterDropOnFloor Replaces WaterDropOnFloor
+{
+	Game Strife
+	+NOBLOCKMAP
+	+MISSILE
+	Speed 0
+	Gravity 1.0
+	-NOGRAVITY
+	Radius 1
+	Height 1
+	Mass 1
+	ConversationID 224, -1, -1
+	ActiveSound "world/waterdrips"
+	States
+	{
+	Spawn:
+	DRIP H 25
+	Stop
+	Death:
+	    DRIP A 1 //A_PlaySound("DSWDRIP")
+		DRIP BCDEFGH 1
+		TNT1 A 0
+		Stop
+	}
+}
+
+
+
+ACTOR BrutalWaterBottle Replaces WaterBottle
+{
+	Game Strife
+	ConversationID 131, -1, -1
+	+SHOOTABLE
+	+NOBLOOD
+	Health 5
+	+NORADIUSDMG
+	Height 8
+	Radius 4
+	States
+	{
+	Spawn:
+		WATR A -1
+		Stop
+	Death:	
+	TNT1 A 0
+	TNT1 A 0 A_PlaySound("DSBGLASS")
+	TNT1 AA 0 A_CustomMissile ("XGlass1", 1, 0, random (0, 360), 2, random (40, 140))
+	TNT1 AA 0 A_CustomMissile ("XGlass2", 1, 0, random (0, 360), 2, random (40, 140))
+	TNT1 A 20
+	Stop
+	}
+}
+
+
+
+
+
+
+
+ACTOR BrutalPillarHugeTech Replaces PillarHugeTech
+{
+	Game Strife
+	Radius 24
+	Height 192
+	+SOLID
+	+SHOOTABLE
+	+NOBLOOD
+	Mass 99999999
+	Health 150
+	ConversationID 214, -1, -1
+	States
+	{
+	Spawn:
+		HUGE ABC 2 BRIGHT
+		Loop
+	
+	Death:
+	    
+		
+		TNT1 A 0 A_CustomMissile ("XJunk1", 55, 0, random (0, 360), 2, random (40, 150))
+		 TNT1 A 0 A_CustomMissile ("XJunk2", 55, 0, random (0, 360), 2, random (40, 150))
+		 TNT1 A 0 A_CustomMissile ("XJunk3", 55, 0, random (0, 360), 2, random (40, 150))
+		 TNT1 A 0 A_CustomMissile ("XJunk4", 55, 0, random (0, 360), 2, random (40, 150))
+		 TNT1 A 0 A_CustomMissile ("XJunk5", 55, 0, random (0, 360), 2, random (40, 150))
+		
+	    TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,50,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 AAA 0 A_CustomMissile ("ExplosionParticleHeavy", 50, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 50, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 50, 0, random (0, 360), 2, random (0, 360)) 
+        TNT1 AAAAAAA 0 A_CustomMissile ("SmallExplosionFlames", 50, 0, random (0, 360), 2, random (0, 360))
+        EXPL AAA 0 A_CustomMissile ("BigNeoSmoke", 50, 0, random (0, 360), 2, random (0, 360))
+	    
+		TNT1 A 0 A_PLaySound("EXPLOSION", 1)
+		TNT1 A 0 A_PLaySound("FAREXPL", 3)
+		
+		HUGE D 60
+		
+		TNT1 A 0 A_SpawnItem("FallingPillarPiece", 0, 160)
+		HUGE EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 14 A_CustomMissile ("BigNeoSmoke", 70, 0, random (0, 360), 2, random (0, 360))
+		HUGE E -1
+		Stop
+	}
+}
+
+
+ACTOR FallingPillarPiece
+{
+	Game Strife
+	+NOBLOCKMAP
+	+MISSILE
+	Speed 0
+	Gravity 1.0
+	-NOGRAVITY
+	Radius 1
+	Height 1
+	Mass 1
+	States
+	{
+	Spawn:
+	HUGE F 100
+	Stop
+	Death:
+	    
+		TNT1 A 0
+		
+		TNT1 AA 0 A_CustomMissile ("XJunk1", 5, 0, random (0, 360), 2, random (40, 150))
+		 TNT1 A 0 A_CustomMissile ("XJunk2", 5, 0, random (0, 360), 2, random (40, 150))
+		 TNT1 AAA 0 A_CustomMissile ("XJunk3", 5, 0, random (0, 360), 2, random (40, 150))
+		 TNT1 A 0 A_CustomMissile ("XJunk4", 5, 0, random (0, 360), 2, random (40, 150))
+		 TNT1 A 0 A_CustomMissile ("XJunk5", 5, 0, random (0, 360), 2, random (40, 150))
+		 
+	   TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,50,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 AAA 0 A_CustomMissile ("ExplosionParticleHeavy", 50, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 50, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 50, 0, random (0, 360), 2, random (0, 360)) 
+        TNT1 AAAAAAA 0 A_CustomMissile ("SmallExplosionFlames", 50, 0, random (0, 360), 2, random (0, 360))
+        EXPL AAA 0 A_CustomMissile ("BigNeoSmoke", 50, 0, random (0, 360), 2, random (0, 360))
+	    TNT1 AA 0 A_CustomMissile ("XJunk1", 5, 0, random (0, 360), 2, random (40, 150))
+		 TNT1 A 0 A_CustomMissile ("XJunk2", 5, 0, random (0, 360), 2, random (40, 150))
+		 TNT1 AAA 0 A_CustomMissile ("XJunk3", 5, 0, random (0, 360), 2, random (40, 150))
+		 TNT1 A 0 A_CustomMissile ("XJunk4", 5, 0, random (0, 360), 2, random (40, 150))
+		 TNT1 A 0 A_CustomMissile ("XJunk5", 5, 0, random (0, 360), 2, random (40, 150))
+		 TNT1 A 0 A_SpawnItem("BarrelKaboom")
+		 TNT1 A 0 A_SpawnItem("BloodScourgeFire")
+		
+		TNT1 A 0 A_EXplode(256, 256)
+		TNT1 A 0 A_PLaySound("EXPLOSION", 1)
+		TNT1 A 0 A_PLaySound("FAREXPL", 3)
+		TNT1 A 100
+		TNT1 A 0 A_SpawnItem("BloodScourgeFire")
+		TNT1 A 100
+		TNT1 A 0 A_SpawnItem("BloodScourgeFire")
+		TNT1 A 100
+		TNT1 A 0 A_SpawnItem("BloodScourgeFire")
+		
+		Stop
+	}
+}
+
+
+
+
+
+
+
+
+
+
+ACTOR BrutalCageLight Replaces CageLight
+{
+	Game Strife
+	Height 4
+	Radius 12
+	+SHOOTABLE
+	+NOBLOOD
+	+SOLID
+	DamageFactor "Alarm", 0
+	Mass 99999
+	Health 1
+	
+	+SPAWNCEILING +NOGRAVITY +FIXMAPTHINGPOS
+	//ConversationID 244, -1, -1
+	States
+	{
+	Spawn:
+	    TNT1 A 0 A_CheckSight("Spawn2")
+		CAGE A 4 BRIGHT A_SpawnItem("LensFlareHorz", 0, -6)
+		Loop
+	Spawn2:
+	    CAGE A 4 BRIGHT
+		Goto Spawn
+	Death:
+	    TNT1 A 0
+			TNT1 A 0 A_PlaySound("DSBGLASS")
+	TNT1 AA 0 A_CustomMissile ("XGlass1", -1, 0, random (0, 360), 2, random (180, 350))
+	TNT1 AA 0 A_CustomMissile ("XGlass2", -1, 0, random (0, 360), 2, random (180, 350))
+		TNT1 A 0 A_SpawnItem("Spark_Down")
+	    CAGE B 1
+		CAGE B -1
+		Stop
+	}
+}
+
+
+
+
+ACTOR BrutalStatue Replaces Statue
+{
+	Game Strife
+	Radius 20
+	Height 64
+	+SOLID
+	+SHOOTABLE
+	+NOBLOOD
+	Health 50
+	Mass 9999999
+	ConversationID 245, -1, -1
+	States
+	{
+	Spawn:
+		STAT A -1
+		Stop
+	Death:
+	TNT1 A 0 A_NoBlocking
+	TNT1 A 0 A_SpawnItem("BrutalStatueRuined")
+	TNT1 AAAA 0 A_CustomMissile ("StoneParticle1", 40, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAA 0 A_CustomMissile ("StoneParticle2", 40, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAA 0 A_CustomMissile ("BigNeoSmoke", 40, 0, random (0, 360), 2, random (30, 160))
+	Stop
+	XDeath:
+	TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("StoneParticle1", 40, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("StoneParticle2", 40, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAAAA 0 A_CustomMissile ("BigNeoSmoke", 40, 0, random (0, 360), 2, random (30, 160))
+	STAT D 1
+	STAT D -1
+	Stop
+	}
+}
+
+
+
+ACTOR BrutalStatueRuined: BrutalStatue Replaces StatueRuined
+{
+	ConversationID 246, -1, -1
+	States
+	{
+	Spawn:
+		DSTA A -1
+		Stop
+    Death:
+	TNT1 A 0 A_NoBlocking
+	TNT1 A 0 A_SpawnItem("BrutalStatueRuined2")
+	TNT1 AAAA 0 A_CustomMissile ("StoneParticle1", 40, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAA 0 A_CustomMissile ("StoneParticle2", 40, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAA 0 A_CustomMissile ("BigNeoSmoke", 40, 0, random (0, 360), 2, random (30, 160))
+	Stop	
+   	XDeath:
+	TNT1 AAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("StoneParticle1", 40, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("StoneParticle2", 40, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAAAA 0 A_CustomMissile ("BigNeoSmoke", 40, 0, random (0, 360), 2, random (30, 160))
+	STAT D 1
+	STAT D -1
+	Stop
+	}
+}
+
+
+ACTOR BrutalStatueRuined2: BrutalStatue
+{
+	States
+	{
+	Spawn:
+		STAT B -1
+		Stop
+    Death:
+	TNT1 A 0 A_NoBlocking
+	TNT1 A 0 A_SpawnItem("BrutalStatueRuined3")
+	TNT1 AAAAAAA 0 A_CustomMissile ("StoneParticle1", 40, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAAAA 0 A_CustomMissile ("StoneParticle2", 40, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAA 0 A_CustomMissile ("BigNeoSmoke", 40, 0, random (0, 360), 2, random (30, 160))
+	Stop	
+   	XDeath:
+	TNT1 AAAAAAAAAAAAA 0 A_CustomMissile ("StoneParticle1", 40, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAAAAAAAAAAA 0 A_CustomMissile ("StoneParticle2", 40, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAAAA 0 A_CustomMissile ("BigNeoSmoke", 40, 0, random (0, 360), 2, random (30, 160))
+	STAT D 1
+	STAT D -1
+	Stop
+	}
+}
+
+
+ACTOR BrutalStatueRuined3: BrutalStatue
+{
+	States
+	{
+	Spawn:
+		STAT C -1
+		Stop
+    Death:
+	TNT1 A 0 A_NoBlocking
+	TNT1 AAAA 0 A_CustomMissile ("StoneParticle1", 40, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("StoneParticle2", 40, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAA 0 A_CustomMissile ("BigNeoSmoke", 40, 0, random (0, 360), 2, random (30, 160))
+	STAT D 1
+	STAT D -1
+	Stop	
+   	XDeath:
+	TNT1 AAAA 0 A_CustomMissile ("StoneParticle1", 40, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAAA 0 A_CustomMissile ("StoneParticle2", 40, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAA 0 A_CustomMissile ("BigNeoSmoke", 40, 0, random (0, 360), 2, random (30, 160))
+	STAT D 1
+	STAT D -1
+	Stop
+	}
+}
+
+
+
+
+
+
+
+
+ACTOR BrutalOutsideLamp Replaces OutsideLamp
+{
+	Game Strife
+	Radius 3
+	Height 80
+	+SOLID
+	ConversationID 248, -1, -1
+	States
+	{
+	Spawn:
+	    TNT1 A 0 A_CheckSight("Spawn2")
+		LAMP A 4 BRIGHT A_SpawnItem("LensFlareHorz", 0, 75)
+		Loop
+	Spawn2:
+	    LAMP A 4 bright
+		Goto Spawn
+	}
+}
+
+
+
+ACTOR BrutalPoleLantern Replaces PoleLantern
+{
+	Game Strife
+	Radius 3
+	Height 80
+	+SOLID
+	ConversationID 249, -1, -1
+	States
+	{
+	Spawn:
+	    TNT1 A 0 A_CheckSight("Spawn2")
+		LANT A 2 A_SpawnItem("YellowFlare2B", 0, 75)
+		Loop
+	Spawn2:
+	    LANT A 2
+		Goto Spawn
+	}
+}
+
+
+
+
+ACTOR BrutalPalmTree Replaces PalmTree
+{
+	Game Strife
+	Radius 15
+	Height 109
+	+SOLID
+	+SHOOTABLE
+	+NOBLOOD
+	Mass 999999
+	Health 50
+	ConversationID 266, -1, -1
+	States
+	{
+	Spawn:
+		TREE A -1
+		Stop
+	Death:
+	    TNT1 A 0 A_NoBlocking
+		
+		TNT1 A 0 A_SpawnItem("BrutalPalmTree")
+		Stop
+	XDeath:
+	Death.Disintegrate:
+	TNT1 A 0 A_CustomMissile ("PalmTreePiece1", 50, 0, random (0, 360), 2, random (30, 160))
+	TNT1 A 0 A_CustomMissile ("PalmTreePiece2", 50, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("PalmTreePiece3", 50, 0, random (0, 360), 2, random (30, 160))
+	DTRE A 1
+	DTRE A -1
+	}
+}
+
+
+
+ACTOR BrutalTree Replaces BigTree2
+{
+	Game Strife
+	Radius 15
+	Height 109
+	+SOLID
+	+SHOOTABLE
+	+NOBLOOD
+	Mass 999999
+	Health 50
+	ConversationID 267, -1, -1
+
+	States
+	{
+	Spawn:
+		TREE B -1
+		Stop
+		
+	Death:
+	    TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItem("BrutalTree")
+		Stop
+	XDeath:
+	Death.Disintegrate:
+	TRD1 AAAABBCCDEF 4 A_CustomMissile ("LeafParticle", 50, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("LeafParticle", 20, 0, random (0, 360), 2, random (30, 160))
+	EXPL A 0 Radius_Quake (2, 54, 0, 15, 0)
+	TRD1 F 100
+	TRD1 F -1
+	}
+}
+
+
+
+
+
+
+
+ACTOR BrutalShortBush Replaces ShortBush
+{
+	Game Strife
+	Radius 1
+	Height 1
+	-SOLID
+	+SHOOTABLE
+	+NOBLOOD
+	Health 1
+	DamageFactor "Alarm", 0.0
+	ConversationID 270, -1, -1
+	DropItem "ClipOfBullets" 8
+	DropItem "ClipOfBullets" 8
+	DropItem "ElectricBolts" 8
+	DropItem "MedPatch" 8
+	DropItem "Coin" 12
+	DropItem "Coin" 12
+	DropItem "Coin" 12
+	DropItem "Coin" 12
+	DropItem "PoisonBolts" 3
+	DropItem "MiniMissiles" 3
+	DropItem "HEGrenadeRounds" 3
+	States
+	{
+	Spawn:
+		BUSH A -1
+		Stop
+	Death:
+	TNT1 A 0 A_NoBlocking
+	TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("LeafParticle", 20, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAA 0 A_CustomMissile ("BushPiece1", 20, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AAAA 0 A_CustomMissile ("BushPiece2", 20, 0, random (0, 360), 2, random (30, 160))
+	Stop
+	}
+}
+
+// Tall Bush ---------------------------------------------------------------
+
+ACTOR BrutalTallBush: BrutalShortBush replaces TallBush
+{
+	ConversationID 271, -1, -1
+	States
+	{
+	Spawn:
+		SHRB A -1
+		Stop
+	}
+}
+
+
+
+
+
+
+
+ACTOR BrutalPot Replaces Pot
+{
+	Game Strife
+	Radius 12
+	Height 24
+	+SOLID
+	+SHOOTABLE
+	+NOBLOOD
+	DropItem "ClipOfBullets" 12
+	DropItem "ClipOfBullets" 12
+	DropItem "ElectricBolts" 12
+	DropItem "MedPatch" 12
+	DropItem "Coin" 22
+	DropItem "Coin" 22
+	DropItem "Coin" 22
+	DropItem "Coin" 22
+	DropItem "PoisonBolts" 3
+	DropItem "MiniMissiles" 3
+	DropItem "HEGrenadeRounds" 3
+	Health 10
+	ConversationID 274, -1, -1
+	States
+	{
+	Spawn:
+		VAZE A -1
+		Stop
+	Death:
+	TNT1 A 0 A_Scream
+	TNT1 AAAAAAA 0 A_CustomMissile ("VasePieces", 5, 0, random (0, 360), 2, random (30, 160))
+	TNT1 A 0 A_NoBlocking
+	Stop
+	}
+}
+
+ACTOR BrutalPitcher Replaces Pitcher
+{
+	Game Strife
+	Radius 12
+	Height 32
+	+SOLID
+	+SHOOTABLE
+	+NOBLOOD
+	DropItem "ClipOfBullets" 12
+	DropItem "ClipOfBullets" 12
+	DropItem "ElectricBolts" 12
+	DropItem "MedPatch" 12
+	DropItem "Coin" 22
+	DropItem "Coin" 22
+	DropItem "Coin" 22
+	DropItem "Coin" 22
+	DropItem "PoisonBolts" 3
+	DropItem "MiniMissiles" 3
+	DropItem "HEGrenadeRounds" 3
+	Health 10
+	ConversationID 275, -1, -1
+	States
+	{
+	Spawn:
+		VAZE B -1
+		Stop
+		Death:
+	TNT1 A 0 A_Scream
+	TNT1 AAAAAAA 0 A_CustomMissile ("VasePieces", 5, 0, random (0, 360), 2, random (30, 160))
+	TNT1 A 0 A_NoBlocking
+	Stop	
+	}
+}
+
+
+ACTOR BrutalLightGlobe Replaces LightGlobe
+{
+	Game Strife
+	Radius 16
+	Height 16
+	+SOLID
+	ConversationID 209, -1, -1
+	States
+	{
+	Spawn:
+	    TNT1 A 0 A_CheckSight("Spawn2")
+		LITE A 4 Bright A_SpawnItem("LensFlare", 0, 70)
+		Loop
+	Spawn2:
+		LITE A 4 Bright
+		Goto Spawn	
+	}
+}
+
+
+ACTOR BrutalStool Replaces Stool
+{
+	Game Strife
+	Radius 6
+	Height 24
+	+SOLID
+	+PUSHABLE
+	+NOBLOOD
+	+SHOOTABLE
+	Health 60
+	Mass 25
+	ConversationID 276, -1, -1
+	DeathSound "woodenbarrel/death"
+	States
+	{
+	Spawn:
+		STOL A -1
+		Stop
+	Death:
+		TNT1 A 0 A_Scream
+		TNT1 AAA 0 A_CustomMissile ("WoodenParticle1", 4, 0, random (0, 360), 2, random (40, 140))
+		TNT1 AAA 0 A_CustomMissile ("WoodenParticle2", 4, 0, random (0, 360), 2, random (40, 140))
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 1
+		Stop
+	}
+}
+
+
+
+ACTOR BrutalMetalPot Replaces MetalPot
+{
+	Game Strife
+	+SHOOTABLE
+	+NOBLOOD
+	Health 5
+	Radius 8
+	Height 8
+	DamageFactor "Alarm", 0
+	PainSound "PAN"
+	ConversationID 277, -1, -1
+	States
+	{
+	Spawn:
+		POT1 A -1
+		Stop
+	Death:
+	    POT1 A 1 A_Pain
+		POT1 A 1 A_FaceTarget
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Scream
+		TNT1 A 0 A_CustomMissile ("KickedMetalPot", 5, 0, random (170, 190), 2, random (20, 40))
+		TNT1 A 0
+		Stop	
+	}
+}
+
+ACTOR MetalPotKickedResting: BrutalMetalPot
+{
+	States
+	{
+	Spawn:
+		POT1 B -1
+		Stop
+	}
+}
+
+
+ACTOR KickedMetalPot: KickedMug
+{
+    SeeSound "PAN"
+    States
+    {
+    Spawn:
+		POT1 ABCD 5
+		Loop
+	Death:
+	    TNT1 A 0
+		TNT1 A 0 A_SpawnItem("MetalPotKickedResting")
+        Stop
+    }
+}
+
+
+
+
+
+
+ACTOR BrutalTechLampSilver Replaces TechLampSilver
+{
+	Game Strife
+	Radius 11
+	Height 64
+	+SOLID
+	ConversationID 280, -1, -1
+	States
+	{
+	Spawn:
+	    TNT1 A 0 A_CheckSight("Spawn2")
+		TECH A 4 BRIGHT A_SpawnItem("LensFlare", 0, 50)
+		Loop
+	Spawn2:
+		TECH A 4 BRIGHT
+		Goto Spawn
+	}
+}
+
+
+
+ACTOR BrutalTargetPractice Replaces TargetPractice
+{
+	Game Strife
+	Health 99999999
+	PainChance 255
+	Radius 10
+	Height 72
+	Mass 9999999
+	+SOLID +SHOOTABLE +NOBLOOD
+	+INCOMBAT +NODAMAGE
+	ConversationID 205, -1, -1
+	PainSound "misc/metalhit"
+	States
+	{
+	Spawn:
+		HOGN A 2 A_CheckTerrain
+		Loop
+	Pain:
+		HOGN B 2 A_CheckTerrain
+		HOGN C 2 A_Pain
+		HOGN BBCCBBBCCC 2 A_CheckTerrain
+		Goto Spawn
+	}
+}

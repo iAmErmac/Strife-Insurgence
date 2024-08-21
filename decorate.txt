@@ -1,0 +1,45 @@
+
+//player
+#include "actors/Player.txt"
+
+//enemies
+#include "actors/Acolyte.txt"
+#include "actors/ShadowAcolyte.txt"
+#include "actors/Sentinel.txt"
+#include "actors/Crusader.txt"
+#include "actors/Inquisitor.txt"
+#include "actors/Stalker.txt"
+#include "actors/Turret.txt"
+#include "actors/Reaver.txt"
+
+//rebels
+#include "actors/Rebels.txt"
+
+//peasants
+#include "actors/Peasants.txt"
+
+//humanoid
+#include "actors/Humanoid.txt"
+
+//blood and gores
+#include "actors/Blood.txt"
+#include "actors/Gore.txt"
+#include "actors/StrifeGore.txt"
+
+//decorations
+#include "actors/Casing.txt"
+#include "actors/Decorations.txt"
+#include "actors/StrifeJunk.txt"
+#include "actors/StrifeJunkNature.txt"
+
+//sfx
+#include "actors/Fire.txt"
+#include "actors/FIREWORKS.txt"
+#include "actors/Flares.txt"
+#include "actors/Particles.txt"
+#include "actors/Puff.txt"
+#include "actors/Smoke.txt"
+#include "actors/Sparks.txt"
+
+//tracers
+#include "actors/Tracers.txt"

@@ -1,0 +1,193 @@
+pulselight BIGREDTORCH50
+{
+    color 1.0 0.3 0.0
+    size 68
+    secondarySize 84
+    interval 0.1
+    offset 0 50 0
+}
+
+
+pulselight BIGREDTORCH10
+{
+    color 1.0 0.3 0.0
+    size 68
+    secondarySize 84
+    interval 0.1
+    offset 0 10 0
+}
+
+
+object BrutalPoleLantern
+{
+    frame LANT { light BIGREDTORCH10 }
+}
+
+
+
+object BrutalSmallTorchLit
+{
+    frame TRHL { light BIGREDTORCH50 }
+}
+
+object BrutalStrifeBurningBarrel
+{
+    frame BBAR { light BIGREDTORCH50 }
+}
+
+object BrutalLargeTorch
+{
+    frame LMPC { light BIGREDTORCH50 }
+}
+
+
+object BrutalMediumTorch
+{
+    frame LTRH { light BIGREDTORCH50 }
+}
+
+
+object BrutalHugeTorch
+{
+    frame LOGS { light BIGREDTORCH50 }
+}
+
+
+
+
+object BrutalBurningBrazier
+{
+    frame BRAZ { light BIGREDTORCH10 }
+}
+
+object BrutalBurningBowl
+{
+    frame BOWL { light BIGREDTORCH10 }
+}
+
+
+object BrutalCandle
+{
+    frame CNDLA { light BIGREDTORCH10 }
+}
+
+
+object BrutalStrifeCandelabra
+{
+    frame CLBR { light BIGREDTORCH10 }
+}
+
+
+
+
+
+pulselight EXPLOSIONFLASH
+{
+    color 1.0 0.3 0.0
+    size 68
+    secondarySize 84
+    interval 0.1
+    offset 0 0 0
+}
+
+pulselight ROCKETLIGHT
+{
+    color 1.0 0.9 0.0
+    size 48
+    secondarySize 54
+    interval 0.1
+    offset 0 0 0
+}
+
+
+
+object ExplosionFlareSpawner
+{
+    frame L2NR { light EXPLOSIONFLASH }
+}
+
+object BrutalMiniMissile
+{
+    frame MICR{ light EXPLOSIONFLASH }
+}
+
+
+object BrutalFlamesOfBrutality
+{
+    frame FRFX { light EXPLOSIONFLASH }
+}
+
+
+
+
+pulselight ALARMZ
+{
+    color 1.0 0.0 0.0
+    size 68
+    secondarySize 84
+    interval 0.1
+    offset 0 0 0
+}
+
+object BrutalKlaxonWarningLight
+{
+    frame KLAXC { light ALARMZ }
+}
+
+
+
+
+
+pulselight BIGGREENTORCH10
+{
+    color 0.0 1.0 0.0
+    size 98
+    secondarySize 124
+    interval 0.1
+    offset 0 10 0
+}
+
+
+object BrutalPillarHugeTech
+{
+    frame HUGEA { light BIGGREENTORCH10 }
+	frame HUGEB { light BIGGREENTORCH10 }
+	frame HUGEC { light BIGGREENTORCH10 }
+}
+
+
+
+
+
+
+
+
+
+pointlight Lamp1
+{
+    color 1.0 1.0 1.0
+    size 80
+    offset 0 0 0
+}
+
+
+object BrutalCageLight
+{
+    frame CAGEA { light Lamp1 }
+}
+
+object BrutalOutsideLamp
+{
+    frame LAMPA { light Lamp1 }
+}
+
+
+object BrutalLightGlobe
+{
+    frame LITEA { light Lamp1 }
+}
+
+object BrutalTechLampSilver
+{
+    frame TECHA { light Lamp1 }
+}

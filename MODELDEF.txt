@@ -1,0 +1,6 @@
+
+//blood spots
+#include "modeldefs/bloodspots.txt"
+
+//tracers
+#include "modeldefs/tracers.txt"

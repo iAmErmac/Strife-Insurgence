@@ -1,0 +1,168 @@
+ACTOR PalmTreePiece1: XJunk1
+{
+Speed 16
++DOOMBOUNCE
+BounceFactor 0.1
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        DTRP ABCD 6
+        Loop
+    Death:
+
+       DTRP A 1000
+        Stop
+    Splash:
+        DTRP A 1000
+        Stop
+    }
+}
+
+
+ACTOR PalmTreePiece2: XJunk1
+{
+Speed 16
++DOOMBOUNCE
+BounceFactor 0.1
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        DT2P ABCD 6
+        Loop
+    Death:
+
+       DT2P A 9000
+        Stop
+    Splash:
+        DT2P A 9000
+        Stop
+    }
+}
+
+ACTOR PalmTreePiece3: XJunk1
+{
+Speed 8
+Gravity 0.2
++DOOMBOUNCE
+BounceFactor 0.1
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        DT3P ABACA 10
+        Loop
+    Death:
+
+       DT3P A 100
+        Stop
+    Splash:
+        DT3P A 100
+        Stop
+    }
+}
+
+
+
+
+ACTOR LeafParticle: XJunk1
+{
+Speed 4
+Gravity 0.1
++DOOMBOUNCE
+BounceFactor 0.1
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        XST2 ABACA 10
+        Loop
+    Death:
+
+       XST2 A 100
+        Stop
+    Splash:
+        XST2 A 100
+        Stop
+    }
+}
+
+
+
+ACTOR BushPiece1: XJunk1
+{
+Speed 8
+Gravity 0.2
++DOOMBOUNCE
+BounceFactor 0.1
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        XST3  ABCD 10
+        Loop
+    Death:
+
+       XST3 A 1000
+        Stop
+    Splash:
+        XST3 A 1000
+        Stop
+    }
+}
+
+
+ACTOR BushPiece2: XJunk1
+{
+Speed 9
+Gravity 0.3
++DOOMBOUNCE
+BounceFactor 0.1
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        XST4  ABCD 10
+        Loop
+    Death:
+
+       XST4 A 1000
+        Stop
+    Splash:
+        XST4 A 1000
+        Stop
+    }
+}
+
+
+
+
+ACTOR VasePieces
+{
+    Radius 5
+    Height 5
+	Speed 6
+	Mass 1
+	BounceFactor 0.5
+	+DOOMBOUNCE
+	+MISSILE
+    +NOBLOCKMAP
+    +NOTELEPORT
+	+CLIENTSIDEONLY
+    States
+    {
+    Spawn:
+		PBIT ABCDEFGHIJ 1
+		Loop
+	Death:
+		NULL A 0 A_Jump(90,2)
+	    PBIT G -1
+		Stop
+		NULL A 0 A_Jump(90,2)
+	    PBIT H -1
+		Stop
+	    PBIT J -1
+        Stop
+    }
+}

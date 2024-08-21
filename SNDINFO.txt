@@ -1,0 +1,76 @@
+$random world/ricochet      	{ ricochet/hit world/blank1 }
+$random ricochet/hit        	{ world/ricochet1 world/ricochet2 world/ricochet3 world/ricochet4 world/ricochet5 world/ricochet6 world/ricochet7 }
+world/ricochet1     		ricoche1
+world/ricochet2     		ricoche2
+world/ricochet3     		ricoche3
+world/ricochet4     		ricoche4
+world/ricochet5     		ricoche5
+world/ricochet6     		ricoche6
+world/ricochet7     		ricoche7
+world/blank1        		blanksnd
+world/blank2        		blanksnd
+DSGLXSS 			DSGLXSS
+
+// Gore
+CLAP 				CLAP
+PAN 				PAN
+$random misc/xdeath		{ misc/xdeath1a misc/xdeath1b misc/xdeath1c misc/xdeath1d misc/xdeath1e misc/xdeath1f misc/xdeath2a misc/xdeath2b misc/xdeath2c misc/xdeath2d misc/xdeath2e misc/xdeath2f misc/xdeath3a misc/xdeath3b misc/xdeath3c misc/xdeath4a misc/xdeath4b misc/xdeath4c }
+misc/xdeath1a			dsxdth1a
+misc/xdeath1b			dsxdth1b
+misc/xdeath1c			dsxdth1c
+misc/xdeath1d			dsxdth1d
+misc/xdeath1e			dsxdth1e
+misc/xdeath1f			dsxdth1f
+$random misc/xdeath1		{ misc/xdeath1a misc/xdeath1b misc/xdeath1c misc/xdeath1d misc/xdeath1e misc/xdeath1f }
+misc/xdeath2a			dsxdth2a
+misc/xdeath2b			dsxdth2b
+misc/xdeath2c			dsxdth2c
+misc/xdeath2d			dsxdth2d
+misc/xdeath2e			dsxdth2e
+misc/xdeath2f			dsxdth2f
+$random misc/xdeath2		{ misc/xdeath2a misc/xdeath2b misc/xdeath2c misc/xdeath2d misc/xdeath2e misc/xdeath2f }
+misc/xdeath3a			dsxdth3a
+misc/xdeath3b			dsxdth3b
+misc/xdeath3c			dsxdth3c
+$random misc/xdeath3		{ misc/xdeath3a misc/xdeath3b misc/xdeath3c }
+misc/xdeath4a			dsxdth4a
+misc/xdeath4b			dsxdth4b
+misc/xdeath4c			dsxdth4c
+$random misc/xdeath4		{ misc/xdeath4a misc/xdeath4b misc/xdeath4c }
+
+$random Sparks/Spawn 		{ Sparks/Sound1  Sparks/Sound2  Sparks/Sound3  Sparks/Sound4 }
+Sparks/Sound1			SPARKS1
+Sparks/Sound2			SPARKS2
+Sparks/Sound3			SPARKS3
+Sparks/Sound4			SPARKS4
+
+DSRLAUN 			DSRLAUN
+G2FIRE 				G2FIRE
+FAREXPL 			FAREXPL
+EXPLOSION 			EXPLOSIO
+$limit EXPLOSION 7
+
+DSXBOW 				DSXBOW
+DSWDRIP 			DSWDRIP
+$limit DSWDRIP 5
+
+$rolloff FAREXPL 3200 6400
+$rolloff EXPLOSION 900 1100
+
+VUP 				VUP
+$random SLMETA 			{ SLMETA1 SLMETA2 SLMETA3 }
+SLMETA1 			SLMETA1
+SLMETA2 			SLMETA2
+SLMETA3 			SLMETA3
+DSSHTFIR 			DSSHTFIR
+
+//Torches
+props/redfire			dsrdtrch
+
+DSBGLASS 			DSBGLASS
+$random weapons/casing  	{ weapons/casing2 weapons/casing3 } 
+$limit weapons/casing 5
+weapons/casing2			dscasin1
+weapons/casing2			dscasin2
+weapons/casing3			dscasin3
+$volume weapons/casing2 0.6 

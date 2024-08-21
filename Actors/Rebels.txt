@@ -1,0 +1,193 @@
+
+
+// Base class for the rebels ------------------------------------------------
+
+ACTOR BrutalRebel : StrifeHumanoid Replaces Rebel
+{
+	Health 70
+	GibHealth 15
+	Painchance 255
+	Speed 6
+	Radius 20
+	Height 56
+	Monster
+	+FRIENDLY
+	-COUNTKILL
+	+NOSPLASHALERT
+	+LOOKALLAROUND
+	+MISSILEMORE
+	+MISSILEEVENMORE
+	-STANDSTILL
+	Tag "$TAG_REBEL"
+	SeeSound "rebel/sight"
+	PainSound "rebel/pain"
+	DeathSound "rebel/death"
+	ActiveSound "rebel/active"
+	Obituary "$OB_REBEL"
+	States
+	{
+	Spawn:
+	    TNT1 A 0
+	    TNT1 A 0 A_CheckSight("WaitForBattle")
+		HMN1 P 5 A_Look2
+		Loop
+		HMN1 Q 8
+		Loop
+		HMN1 R 8
+		Loop
+		HMN1 AABBCCDDAABBCCDD 3 A_Wander
+		Loop
+		
+	Pain.Alarm:
+	TNT1 A 0
+	TNT1 A 0 HealThing(1)
+	Goto See	
+	
+	See:
+	    TNT1 A 0
+		HMN1 AAAABBBBCCCCDDDD 1 A_Chase
+		Loop
+	WaitForBattle:	
+		HMN1 P 2
+		Goto Spawn
+	Missile:
+		HMN1 E 5 A_FaceTarget
+		TNT1 A 0 A_PlaySOund("G2FIRE")
+		HMN1 F 3 BRIGHT A_CustomMissile("ZombiemanTracer", 36, 0, random(-2, 2), 0)
+		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+		HMN1 E 3 A_FaceTarget
+		
+		TNT1 A 0 A_PlaySOund("G2FIRE")
+		HMN1 F 3 BRIGHT A_CustomMissile("ZombiemanTracer", 46, 0, random(-3, 3), 0)
+		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+		HMN1 E 3 A_FaceTarget
+		
+		TNT1 A 0 A_PlaySOund("G2FIRE")
+		HMN1 F 3 BRIGHT A_CustomMissile("ZombiemanTracer", 36, 0, random(-1, 1), 0)
+		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+		HMN1 E 12 A_FaceTarget
+		TNT1 A 0 A_JumpIfCloser(300, "StepBack")
+		Goto See
+		
+	StepBack:
+	TNT1 A 0
+	TNT1 A 0 A_Recoil(6)
+	HMN1 DCBA 4
+	Pain:
+		HMN1 O 3
+		HMN1 O 3 A_Pain
+		Goto See
+	Death:
+		HMN1 G 5
+		
+		
+		
+		HMN1 H 5 A_Scream
+		HMN1 I 3 A_NoBlocking
+		HMN1 J 4 A_SpawnItem("Alarm1200")
+		HMN1 KLM 3
+		HMN1 N -1
+		Stop
+	XDeath:
+		TNT1 A 0 A_NoBlocking
+		
+		TNT1 AAA 0 A_CustomMissile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("FlyingBlood", 58, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_CustomMissile ("XGib1", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAA 0 A_CustomMissile ("XGib2", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAA 0 A_CustomMissile ("XGib3", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("XGib4", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_CustomMissile ("XGib5", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_CustomMissile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
+		//TNT1 AAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+		
+		TNT1 A 0 A_CustomMissile ("RebelHead", 52, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_CustomMissile ("AcolyteLeg1", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("GenericArm1", 52, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("GenericArm2", 52, 0, random (0, 360), 2, random (0, 160))
+		
+		TNT1 A 0 A_XScream
+		Stop
+		
+		Disintegrate:
+		DISR A 3 BRIGHT A_PlaySoundEx("misc/disruptordeath", "Voice")
+		DISR B 3 BRIGHT A_NoBlocking
+		DISR CD 3 BRIGHT
+		TNT1 AA 0 A_CustomMissile ("CarbonizedArm", 48, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_CustomMissile ("CarbonizedHead", 48, 0, random (0, 360), 2, random (50, 130))
+		TNT1 AAAAAAAA 6 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (50, 130))	
+	    Stop
+		
+		
+						Death.CrusH:
+		TNT1 AAA 0 A_CustomMissile ("XDeath1", 32, 0, random (0, 360), 2, random (150, 180))
+		TNT1 AAAAAAAAAAAAAA 0 A_CustomMissile ("FlyingBlood", 58, 0, random (0, 360), 2, random (150, 180))
+		TNT1 AAAAA 0 A_CustomMissile ("XGib1", 32, 0, random (0, 360), 2, random (150, 180))
+		TNT1 AAAAAAAA 0 A_CustomMissile ("XGib2", 32, 0, random (0, 360), 2, random (150, 180))
+		TNT1 AAAAAAAA 0 A_CustomMissile ("XGib3", 32, 0, random (0, 360), 2, random (150, 180))
+		TNT1 AAAAAAAAAAAAAA 0 A_CustomMissile ("XGib4", 32, 0, random (0, 360), 2, random (150, 180))
+		TNT1 AA 0 A_CustomMissile ("XGib5", 32, 0, random (0, 360), 2, random (150, 180))
+		TNT1 AAA 0 A_CustomMissile ("Instestin", 32, 0, random (0, 360), 2, random (150, 180))
+		
+		TNT1 A 0 A_XScream
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0
+		Stop
+	 }
+}
+
+// Rebel 1 ------------------------------------------------------------------
+
+ACTOR BrutalRebel1 : BrutalRebel Replaces Rebel1
+{
+	Game Strife
+	ConversationID 43, 42, 43
+	DropItem "ClipOfBullets"
+}
+
+// Rebel 2 ------------------------------------------------------------------
+
+ACTOR BrutalRebel2 : BrutalRebel Replaces Rebel2
+{
+	Game Strife
+	ConversationID 44, 43, 44
+}
+
+// Rebel 3 ------------------------------------------------------------------
+
+ACTOR BrutalRebel3 : BrutalRebel Replaces Rebel3
+{
+	Game Strife
+	ConversationID 45, 44, 45
+}
+
+// Rebel 4 ------------------------------------------------------------------
+
+ACTOR BrutalRebel4 : BrutalRebel Replaces Rebel4
+{
+	Game Strife
+	ConversationID 46, 45, 56
+}
+
+// Rebel 5 ------------------------------------------------------------------
+
+ACTOR BrutalRebel5 : BrutalRebel Replaces Rebel5
+{
+	Game Strife
+	ConversationID 47, 46, 47
+}
+
+// Rebel 6 ------------------------------------------------------------------
+
+ACTOR BrutalRebel6 : BrutalRebel Replaces Rebel6
+{
+	Game Strife
+	ConversationID 48, 47, 48
+}
+
+
+
+Actor NowInBattle : Inventory
+{
+inventory.maxamount 1
+}
