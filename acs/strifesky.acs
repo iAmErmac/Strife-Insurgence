@@ -1,0 +1,44 @@
+#library "strifesky"
+#include "zcommon.acs"
+
+int sLightning = 0;
+bool setLightningMode = false;
+
+function void loadCVAR(void) {
+	sLightning = GetCVar("svr_lightning");
+}
+
+function void setLightning(void) {
+	int levelNum = GetLevelInfo(LEVELINFO_LEVELNUM);
+	
+	if(levelNum > 9 && levelNum < 31)
+	{
+		if(sLightning > 0) {
+			Light_ForceLightning(0);
+			setLightningMode = true;
+		}
+	}
+}
+
+script "SKYINIT" ENTER {
+	delay(35);
+	ACS_NamedExecute("SKYLOOP",0,0,0,0);
+}
+
+script "SKYLOOP" (void) {
+	delay(100);
+	loadCVAR();
+	
+	bool outside = CheckActorCeilingTexture (0, "F_SKY001");
+	int levelNum = GetLevelInfo(LEVELINFO_LEVELNUM);
+	
+	if((sLightning == 0 && setLightningMode == true) || outside == false) {
+		Light_ForceLightning(2);
+		setLightningMode = false;
+	}
+	else if(setLightningMode == false && Random(1, 10) > 7) {
+		setLightning();
+	}
+	
+	restart;
+}

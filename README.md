@@ -13,8 +13,10 @@ This addon aims to add VR weapons and QoL improvements for VR in the game Strife
 ## Features
 * VR weapons without/with hand models
 * Voxel pickups and props
-* Enhanced gore and effects based on Brutal Strife
+* Enhanced gore and effects (based on Brutal Strife mod)
 * Sprite fixes (from Strife97 mod)
+* Enhanced Skybox (based on Nice Sky mod)
+* Remastered Music Tracks (by Xeotroid)
 
 ## Installation
 
@@ -110,8 +112,8 @@ If you don't own Strife:
 
 ## Recommended mods to combine with:
 
-* [Liquid Texture Pack V6](https://forum.zdoom.org/viewtopic.php?t=72304):
-  - This is a shader pack that replaces all of the original liquid textures in GZDoom engine for a more modern looking effect. This archived version here is a special modified version for QuestZDoom by [Emawind](https://github.com/emawind84/doom-mod-liquid-texture-pack) which has been further modified by Ermac to work with Strife
+* [Liquid Texture Pack](https://github.com/iAmErmac/Strife-Insurgence/releases/tag/archive):
+  - This is a shader pack that replaces all of the original liquid textures in GZDoom engine for a more modern looking effect. The archived versions here are special modified versions for QuestZDoom by [Emawind](https://github.com/emawind84/doom-mod-liquid-texture-pack) which has been further modified by Ermac to work with Strife
 
 * [VR Flashlight:](https://github.com/iAmErmac/VR-Flashlight)
   - Since the included flashlight has been removed, you are required to use this Flashlight mod instead
@@ -130,6 +132,8 @@ If you don't own Strife:
 * Reikall - Voxel pickups and props
 * Segeant_Mark_IV - Enhanced gores and effects (Brutal Strife)
 * The Almighty Egg - Sprite fixes (Strife97)
+* lulle - Moving Skybox (Nice Sky)
 * Cherno - Simsun Shader
 * ramon.dexter - 3D weapon models (World of Strife)
+* Xeotroid - Music Covers
 * Ermac - Scripts and models for VR, additional voxel pickups

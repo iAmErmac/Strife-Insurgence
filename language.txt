@@ -1,0 +1,14 @@
+[enu default]
+
+VRMOD_OPTIONS = "VR Mod Options";
+
+SVR_SKYBOX = "Enhanced Skybox";
+SVR_NICESKY = "Nice Sky";
+SVR_BLUESKY_MOVE = "Blue Sky Move Speed";
+SVR_REDSKY_MOVE = "Red Sky Move Speed";
+SVR_LIGHTNING = "Lightning with Red Sky";
+
+SVR_MUSIC = "Music Tracks";
+SVR_RMUSIC = "Remastered Tracks";
+
+TEASER_MAP = "Play Teaser";

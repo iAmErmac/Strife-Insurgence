@@ -1,0 +1,17 @@
+
+skybox "SKYBLUE" {
+     SKY1FT
+     SKY1RT
+     SKY1BK
+     SKY1LF
+     SKY1UP
+     SKY1DN
+}
+skybox "SKYRED" {
+     SKY2FT
+     SKY2RT
+     SKY2BK
+     SKY2LF
+     SKY2UP
+     SKY2DN
+}

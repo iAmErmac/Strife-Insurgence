@@ -74,3 +74,5 @@ weapons/casing2			dscasin1
 weapons/casing2			dscasin2
 weapons/casing3			dscasin3
 $volume weapons/casing2 0.6 
+
+world/thunder		THNDR1

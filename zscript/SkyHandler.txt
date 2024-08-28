@@ -1,0 +1,92 @@
+
+class SkyHandler : EventHandler
+{
+	override void WorldTick()
+	{
+		if(Level.Time && Level.Time % 100 == 0)
+		{
+			loadConfig();
+			
+			if(niceSky)
+				SetSkyBox();
+			else
+				ResetSkyBox();
+		}
+	}
+	
+	override void WorldLoaded(WorldEvent e)
+	{	
+		loadConfig();
+		
+		sky1 = Level.SkyTexture1;
+		sky2 = Level.SkyTexture2;
+		sky1Speed = Level.SkySpeed1;
+		sky2Speed = Level.SkySpeed2;
+		if(niceSky) SetSkyBox();
+		if(hasLightning) addLightning();
+	}
+	
+	void loadConfig()
+	{
+		niceSky = CVar.GetCVar("svr_nicesky").GetBool();
+		
+		blueSkyMoveSpeed = CVar.GetCVar("svr_bsky_move").GetInt() * 0.001;
+		redSkyMoveSpeed = CVar.GetCVar("svr_rsky_move").GetInt() * 0.001;
+		
+		hasLightning = CVar.GetCVar("svr_lightning").GetBool();
+	}
+	
+	void SetSkyBox()
+	{
+		skyBlue = TexMan.CheckForTexture("SKYBLUE",TexMan.Type_Any);
+		skyRed = TexMan.CheckForTexture("SKYRED",TexMan.Type_Any);
+		
+		if(Level.LevelNum > 9 && Level.LevelNum < 31)
+		{
+			//Blood Sky
+			Level.ChangeSky(skyRed, skyRed);
+			Level.SkySpeed1 = redSkyMoveSpeed;
+			Level.SkySpeed2 = redSkyMoveSpeed;
+			//Level.ForceLightning(0); //Not supported in LZDoom. will use acs instead
+		}
+		else
+		{
+			//Blue Sky
+			Level.ChangeSky(skyBlue, skyBlue);
+			Level.SkySpeed1 = blueSkyMoveSpeed;
+			Level.SkySpeed2 = blueSkyMoveSpeed;
+		}
+	}
+	
+	void ResetSkyBox()
+	{
+		Level.ChangeSky(sky1, sky2);
+		Level.SkySpeed1 = sky1Speed;
+		Level.SkySpeed2 = sky2Speed;
+	}
+	 
+	void addLightning()
+	{
+		TextureID skytex1 = TexMan.CheckForTexture("F_SKY001", TexMan.Type_Any);
+		int iSecs = level.sectors.size();
+		
+		for (int i=0; i<iSecs-1; i++) {
+			Sector sec = level.sectors[i];
+			TextureID curSky = sec.GetTexture(Sector.Ceiling);
+			if(curSky == skytex1 && sec.SPECIAL == 0)
+			{
+				sec.special = 197;
+				if(sec.Lightlevel == 255) {
+					sec.Lightlevel = 196;
+				}
+				else if(sec.Lightlevel > 150) {
+					sec.Lightlevel -= 16;
+				}
+			}
+		}
+	}
+	
+	bool niceSky, hasLightning;
+	TextureID skyBlue, skyRed, sky1, sky2;
+	double blueSkyMoveSpeed, redSkyMoveSpeed, sky1Speed, sky2Speed;
+}

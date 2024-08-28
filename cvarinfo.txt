@@ -1,0 +1,7 @@
+
+user bool svr_music = true;
+
+server bool svr_nicesky = true;
+server int svr_bsky_move = 2;
+server int svr_rsky_move = 10;
+server int svr_lightning = 1;

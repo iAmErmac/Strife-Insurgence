@@ -1,0 +1,53 @@
+
+class RMusicHandler : EventHandler
+{
+	override void WorldTick()
+	{
+		if(Level.Time && Level.Time % 100 == 0)
+		{
+			loadConfig();
+			
+			if(playRemastered)
+				ChangeMusic();
+			else
+				ResetMusic();
+		}
+	}
+	
+	override void WorldLoaded(WorldEvent e)
+	{	
+		loadConfig();
+		levelMusic = Level.Music;
+		if(playRemastered) ChangeMusic();
+	}
+	
+	void loadConfig()
+	{
+		Playerinfo player = players[consoleplayer];
+		playRemastered = CVar.GetCVar("svr_music", player).GetBool();
+	}
+	
+	void ChangeMusic()
+	{
+		if(levelMusic.Length() > 0)
+		{
+			//teaser maps
+			if(levelMusic ~== "D_MAP1")
+				S_ChangeMusic("R_ACTION");
+			else if(levelMusic ~== "D_MAP2")
+				S_ChangeMusic("R_TAVERN");
+			
+			//retail maps
+			else
+				S_ChangeMusic("r" .. levelMusic.Mid(1));
+		}
+	}
+	
+	void ResetMusic()
+	{
+		S_ChangeMusic(levelMusic);
+	}
+	
+	String levelMusic;
+	bool playRemastered;
+}

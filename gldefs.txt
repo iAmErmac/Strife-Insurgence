@@ -1,3 +1,6 @@
 
 //dynamic lights
 #include "gldefs/dynlights.txt"
+
+//sky boxes
+#include "gldefs/skybox.txt"
